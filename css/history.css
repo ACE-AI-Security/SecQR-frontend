@@ -1,20 +1,3 @@
-.blocked-url-list {
-    list-style-type: none;
-    padding: 0;
-  }
-  .blocked-url-list li {
-    display: flex;
-    justify-content: space-between;
-    margin: 5px 0;
-  }
-  .remove-button {
-    background-color: red;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-
-
   @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap");
   @font-face {
     font-family: "Pretendard-Regular";
@@ -63,4 +46,20 @@
     width: 26px;
     height: 26px;
     margin: 22px 36px 16px 0px;
+    filter: brightness(0) invert(1);
+  }
+
+  .blocked-url-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  .blocked-url-list li {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+  }
+  .remove-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
   }
