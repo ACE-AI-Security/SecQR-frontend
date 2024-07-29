@@ -1,52 +1,85 @@
-// URL을 새 창에 열기 위한 함수
-function openURLInNewTab(url) {
-    window.open(url, '_blank');
-}
 
-// 검색 버튼 클릭 시 동작할 함수
-document.getElementById('submitUrlButton').addEventListener('click', function () {
-    var url = document.getElementById('urlInput').value;
-    openURLInNewTab(url);
-});
+const openDecodedURL = () => {
+    const urlInput = document.querySelector(".url-input");
+    const decodedURL = urlInput.value;
+    if (decodedURL) {
+    window.open(decodedURL, "_blank");
+    } else {
+    alert("Please enter a URL.");
+    }
+};
 
-document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('scan').addEventListener('click', function () {
-        window.location.href = 'qr-scan.html';
+const toggleBlockURLImage = (url) => {
+    chrome.storage.sync.get("blockedURLs", (data) => {
+    const blockedURLs = data.blockedURLs || [];
+    const blockURLButton = document.querySelector(".Block-URL");
+    if (blockedURLs.includes(url)) {
+        blockURLButton.src = "/images/Block-URL-check.svg";
+    } else {
+        blockURLButton.src = "/images/Block-URL.svg";
+    }
     });
+};
 
-    document.getElementById('document').addEventListener('click', function () {
-        window.location.href = 'url-info.html';
-    });
+const toggleBlockURL = () => {
+    const urlInput = document.querySelector(".url-input");
+    const urlToBlock = urlInput.value.trim();
 
-    document.getElementById('qrcode').addEventListener('click', function () {
-        window.location.href = 'generate.html';
-    });
+    if (!urlToBlock) {
+    alert("No URL to block/unblock");
+    return;
+    }
 
-    document.getElementById('history').addEventListener('click', function () {
-        // 버튼 4에 대한 동작
-    });
+    chrome.storage.sync.get("blockedURLs", (data) => {
+    let blockedURLs = data.blockedURLs || [];
+    const urlIndex = blockedURLs.indexOf(urlToBlock);
 
-    const infoButton = document.getElementById('info-button');
-    const infoText = document.getElementById('info-text');
-
-    infoButton.addEventListener('click', function () {
-        const urlBox = document.getElementById('urlInput');
-        if (urlBox.value.trim() === '') {
-            // 입력된 URL이 없는 경우 삼각형 버튼 클릭해도 아무것도 안 뜨게 함
-            infoText.style.display = 'none';
-        } else {
-            // 입력된 URL이 있는 경우에만 연습 텍스트 1 표시
-            if (infoText.style.display === 'block') {
-                // 연습 텍스트가 이미 보이는 상태이면 다시 숨김
-                infoText.style.display = 'none';
-            } else {
-                // 연습 텍스트가 숨겨진 상태이면 보이게 함
-                infoText.style.display = 'block';
-            }
+    if (urlIndex === -1) {
+        if (confirm(`Do you want to block this URL: ${urlToBlock}?`)) {
+        blockedURLs.push(urlToBlock);
+        chrome.storage.sync.set({ blockedURLs }, () => {
+            toggleBlockURLImage(urlToBlock);
+            alert(`Blocked: ${urlToBlock}`);
+        });
+    }
+    } else {
+        if (confirm(`Do you want to unblock this URL: ${urlToBlock}?`)) {
+        blockedURLs.splice(urlIndex, 1);
+        chrome.storage.sync.set({ blockedURLs }, () => {
+            toggleBlockURLImage(urlToBlock);
+            alert(`Unblocked: ${urlToBlock}`);
+        });
         }
+    }
     });
+};
+
+const topnavRightContainer = document.querySelector(
+    ".Topnav-right-container"
+);
+topnavRightContainer.addEventListener("click", openDecodedURL);
+
+document
+    .querySelector(".Block-URL-button")
+    .addEventListener("click", toggleBlockURL);
+
+document
+    .querySelector(".Topnav-left-arrow")
+    .addEventListener("click", function () {
+    window.location.href = "main.html";
+    });
+
+const urlInput = document.querySelector(".url-input");
+urlInput.addEventListener("input", () => {
+    const url = urlInput.value.trim();
+    toggleBlockURLImage(url);
 });
-document.getElementById('checkbox').addEventListener('click', function () {
-    var checkbox = document.getElementById('agree');
-    checkbox.classList.toggle('checked');
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const button = document.getElementById('toglebutton');
+    const content = document.querySelector('.toggle-content');
+
+    button.addEventListener('click', () => {
+        content.classList.toggle('active');
+    });
 });

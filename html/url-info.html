@@ -5,53 +5,74 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>SecQR</title>
         <link rel="stylesheet" href="../css/url-info.css" />
-        <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
     </head>
     <body>
-        <div id="SecQR-popup"></div>
         <div class="container">
-            <div class="header">
-                <img src="/icons/logo.png" alt="SecQR Logo" class="logo" />
-                <div class="title-container">
-                    <p class="title">SecQR</p>
-                    <p class="subtitle">Securely scan & block malicious QR codes</p>
-                </div>
-            </div>
-            <div id="checkbox" class="checkbox-container">
-                <button id="agree" class="checkbox-check">
-                    <span class="checkmark"></span>
-                </button>
-                <span class="text">url을 차단할까요?</span>
-            </div>
-            <div class="button-container">
-                <button class="button scan-button" id="scan">
-                    <img src="/images/scan.svg" alt="scan" class="scan-image" />
-                    <p class="scan-text">QR 스캔</p>
-                </button>
-
-                <button class="button document-button" id="document">
-                    <img src="/images/document.svg" alt="document" class="document-image" />
-                    <p class="document-text">URL 정보</p>
-                </button>
-
-                <button class="button qr-button" id="qrcode">
-                    <img src="/images/qr code.svg" alt="qr" class="qr-image" />
-                    <p class="qr-text">QR 생성</p>
-                </button>
-
-                <button class="button history-button" id="history">
-                    <img src="/images/history.svg" alt="history" class="history-image" />
-                    <p class="history-text">History</p>
-                </button>
-            </div>
-            <div class="url-input-container">
-                <input type="text" id="urlInput" placeholder="URL을 입력하세요" class="url-input" />
-                <button id="submitUrlButton" class="submit-url-button">이동</button>
-            </div>
-            <button id="info-button">▼</button>
-            <div id="info-text" style="display: none">연습 텍스트 1</div>
+        <div class="Topnav">
+        <div class="Topnav-left-container">
+            <img
+                src="/images/Topnav-left-arrow.svg"
+                alt="Topnav-left-arrow"
+                class="Topnav-left-arrow"
+            />
         </div>
+        <div class="Topnav-title">URL Info</div>
+        <div class="Topnav-right-container">
+            <img
+                src="/images/Topnav-open-url.svg"
+                alt="Topnav-open-url"
+                class="Topnav-open-url"
+            />
+            </div>
+        </div>
+        <div class="URL">
+        <div class="Block-URL-button">
+            <img src="/images/Block-URL.svg" alt="Block-URL" class="Block-URL" />
+        </div>
+        <div class="URL-input-container">
+            <input type="text" class="url-input" placeholder="Enter URL" />
+            <div class="Search-button">
+            <img src="/images/Search.svg" alt="Search" class="Search" />
+        </div>
+        </div>
+        </div>
+    </div>
 
-        <script src="../js/url-info.js"></script>
+    <hr style="border: solid 1px rgb(207, 207, 207); width:90%;">
+    <div class="content">
+        <div class="card">
+            <div class="icon-group">
+                <img src="/images/dangerous.svg" alt="dangerous"/>
+                <span style="font-size:16px">Malicious URL</span>
+            </div>
+            <button id="toglebutton" class="icon">
+                <img src="/images/ArrowDown.svg" alt="Arrow Down"/>
+            </button>
+        </div>
+        <div class="toggle-content">
+            <div class="toggle-item">
+                <span>Parameter length</span>
+                <img src="/images/Right Button.svg" alt="Right Button" />
+            </div>
+            <div class="toggle-item">
+                <span>Having_ip_address</span>
+                <img src="/images/Close.svg" alt="dangerous" />
+            </div>
+            <div class="toggle-item">
+                <span>Protocol</span>
+                <img src="/images/Right Button.svg" alt="Right Button" />
+            </div>
+            <div class="toggle-item">
+                <span>Sub_domain</span>
+                <img src="/images/Close.svg" alt="dangerous" />
+            </div>
+            <div class="toggle-item">
+                <span>Abnormal_url</span>
+                <img src="/images/Close.svg" alt="dangerous" />
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/url-info.js"></script>
     </body>
 </html>
