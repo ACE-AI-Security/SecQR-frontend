@@ -1,78 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>SecQR</title>
-        <link rel="stylesheet" href="../css/url-info.css" />
-    </head>
-    <body>
-        <div class="container">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SecQR</title>
+    <link rel="stylesheet" href="../css/url-info.css" />
+</head>
+<body>
+    <div class="container">
         <div class="Topnav">
-        <div class="Topnav-left-container">
-            <img
-                src="/images/Topnav-left-arrow.svg"
-                alt="Topnav-left-arrow"
-                class="Topnav-left-arrow"
-            />
-        </div>
-        <div class="Topnav-title">URL Info</div>
-        <div class="Topnav-right-container">
-            <img
-                src="/images/Topnav-open-url.svg"
-                alt="Topnav-open-url"
-                class="Topnav-open-url"
-            />
+            <div class="Topnav-left-container">
+                <img src="/images/Topnav-left-arrow.svg" alt="Topnav-left-arrow" class="Topnav-left-arrow" />
+            </div>
+            <div class="Topnav-title">URL Info</div>
+            <div class="Topnav-right-container">
+                <img src="/images/Topnav-open-url.svg" alt="Topnav-open-url" class="Topnav-open-url" />
             </div>
         </div>
         <div class="URL">
-        <div class="Block-URL-button">
-            <img src="/images/Block-URL.svg" alt="Block-URL" class="Block-URL" />
-        </div>
-        <div class="URL-input-container">
-            <input type="text" class="url-input" placeholder="Enter URL" />
-            <div class="Search-button">
-            <img src="/images/Search.svg" alt="Search" class="Search" />
-        </div>
-        </div>
+            <div class="Block-URL-button">
+                <img src="/images/Block-URL.svg" alt="Block-URL" class="Block-URL" />
+            </div>
+            <div class="URL-input-container">
+                <input type="text" class="url-input" placeholder="Enter URL" />
+                <div class="Search-button">
+                    <img src="/images/Search.svg" alt="Search" class="Search" />
+                </div>
+            </div>
         </div>
     </div>
 
     <hr style="border: solid 1px rgb(207, 207, 207); width:90%;">
     <div class="content">
+        <div id="result">
+            <!-- URL 정보가 여기에 표시됩니다 -->
+        </div>
         <div class="card">
-            <div class="icon-group">
-                <img src="/images/dangerous.svg" alt="dangerous"/>
-                <span style="font-size:16px">Malicious URL</span>
+            <div class="icon-group" id="icon-group" style="visibility: hidden;">
+                <img id="status-icon" src="" alt="status"/>
+                <span id="status-text" style="font-size:16px"></span>
             </div>
-            <button id="toglebutton" class="icon">
+            <button id="togglebutton" class="icon">
                 <img src="/images/ArrowDown.svg" alt="Arrow Down"/>
             </button>
         </div>
         <div class="toggle-content">
             <div class="toggle-item">
                 <span>Parameter length</span>
-                <img src="/images/Right Button.svg" alt="Right Button" />
+                <img id="parameter-length-icon" src="/images/Right Button.svg" alt="Right Button" />
             </div>
             <div class="toggle-item">
                 <span>Having_ip_address</span>
-                <img src="/images/Close.svg" alt="dangerous" />
+                <img id="ip-address-icon" src="/images/Close.svg" alt="dangerous" />
             </div>
             <div class="toggle-item">
                 <span>Protocol</span>
-                <img src="/images/Right Button.svg" alt="Right Button" />
+                <img id="protocol-icon" src="/images/Right Button.svg" alt="Right Button" />
             </div>
             <div class="toggle-item">
                 <span>Sub_domain</span>
-                <img src="/images/Close.svg" alt="dangerous" />
+                <img id="sub-domain-icon" src="/images/Close.svg" alt="dangerous" />
             </div>
             <div class="toggle-item">
                 <span>Abnormal_url</span>
-                <img src="/images/Close.svg" alt="dangerous" />
+                <img id="abnormal-url-icon" src="/images/Close.svg" alt="dangerous" />
             </div>
         </div>
     </div>
 
     <script src="../js/url-info.js"></script>
-    </body>
+</body>
 </html>
