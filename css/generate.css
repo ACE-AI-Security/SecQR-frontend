@@ -20,6 +20,119 @@ body {
 .container {
   background: transparent;
   width: 375px;
+  height: 100vh; /* 페이지 전체 높이를 사용 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* 세로 방향으로 중앙 정렬 */
+}
+
+.Topnav {
+  width: 375px;
+  height: 64px;
+  justify-content: space-between;
+  display: flex;
+}
+.Topnav-left-container,
+.Topnav-right-container {
+  cursor: pointer;
+}
+.Topnav-left-arrow {
+  width: 20px;
+  height: 20px;
+  margin: 25px 0px 19px 36px;
+}
+.Topnav-title {
+  font-size: 16px;
+  font-weight: 800;
+  margin-top: 25.5px;
+  font-family: "DM Sans";
+}
+.Topnav-open-url {
+  width: 26px;
+  height: 26px;
+  margin: 22px 36px 16px 0px;
+}
+.generate-URL {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  margin: 5px 16px 0px 16px;
+}
+
+.generate-URL-input-container {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin-left: 14px;
+  border-top: none; 
+  border-right: none;
+  border-left: none;
+  border-bottom: 1px solid #C5C6CC;
+}
+.generate-url-input {
+  border: none;
+  background-color: transparent;
+  margin: 10px 12px 10px 16px;
+  outline: none;
+  font-size: 14px;
+  width: 239px;
+  font-family: "Pretendard-Regular";
+}
+.generate-Download-button {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  margin-right: 6px;
+}
+
+.generate-Download-button img {
+  width: 16px;
+  height: 16px;
+}
+
+.Image {
+  background-color: #eaf2ff;
+  width: 319px;
+  height: 299px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin: 21px 28px 16.9px 28px;
+}
+.Image img {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  width: auto;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap");
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+body {
+  margin: 0;
+  -ms-overflow-style: none;
+  font-family: "Pretendard-Regular";
+  height: 600px;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.container {
+  background: transparent;
+  width: 375px;
 }
 .Topnav {
   width: 375px;
@@ -104,16 +217,32 @@ body {
   height: auto;
   width: auto;
 }
-/* .generate-Download{
-    color : #006ffd;
-    background-color: #eaf2ff;
-    font-size: 14px;
-    font-weight: 600;
-    padding: 9px 40px 9px 40px;
-    border-radius: 12px;
-    margin: 18px 12px 0px 0px;
-    width: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-} */
+
+.generate-Download {
+  color: #006ffd;
+  background-color: #eaf2ff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 9px 20px;
+  border-radius: 12px;
+  margin: 18px 0px; /* 가로 여백을 0으로 설정하여 중앙 정렬 */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+  border: none;
+}
+
+.generate-Download:hover {
+  background-color: #006ffd;
+  color: #ffffff;
+}
+
+.generate-Download img {
+  width: 14px;
+  height: 14px;
+  margin-right: 4px;
+  vertical-align: middle;
+}
