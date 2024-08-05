@@ -55,7 +55,7 @@ const toggleBlockURL = () => {
 
 const displayURLInfo = (urlInfo) => {
     const { parameter_len, having_ip_address, protocol, sub_domain, abnormal_url } = urlInfo;
-    document.getElementById('parameter-length-icon').src = parameter_len ? "/images/Close.svg" : "/images/Right Button.svg";
+    document.getElementById('parameter-length-value').innerText = parameter_len;
     document.getElementById('ip-address-icon').src = having_ip_address ? "/images/Close.svg" : "/images/Right Button.svg";
     document.getElementById('protocol-icon').src = protocol ? "/images/Close.svg" : "/images/Right Button.svg";
     document.getElementById('sub-domain-icon').src = sub_domain ? "/images/Close.svg" : "/images/Right Button.svg";
@@ -72,12 +72,12 @@ const fetchURLInfo = async () => {
     }
 
     try {
-        const response = await fetch('http://localhost:3000/check_url', {
+        const response = await fetch('http://127.0.0.1:5000/predict', { // 서버 URL 수정
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/x-www-form-urlencoded'
             },
-            body: JSON.stringify({ url: urlToCheck })
+            body: new URLSearchParams({ url: urlToCheck })
         });
         const data = await response.json();
         

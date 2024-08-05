@@ -50,7 +50,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Generate QR code when generate-download-button is clicked
+    // Generate QR code when generate button is clicked
+    document.querySelector('.generate-qr-button').addEventListener('click', generateQRCode);
+
+    // Download QR code when Download button is clicked
     document.querySelector('.generate-Download-button').addEventListener('click', downloadQRCode);
 
     // Generate QR code when Enter key is pressed in the input field

@@ -1,91 +1,127 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // URL 열기
-  function openUrlInNewTab() {
-    const urlInput = document.querySelector(".main-url-input").value;
-    if (urlInput) {
-      window.open(urlInput, "_blank");
-    } else {
-      alert("Please enter a URL.");
+    function openUrlInNewTab() {
+        const urlInput = document.querySelector(".main-url-input").value;
+        if (urlInput) {
+            window.open(urlInput, "_blank");
+        } else {
+            alert("Please enter a URL.");
+        }
     }
-  }
 
-  // 페이지 이동
-  function navigateToPage(elementSelector, targetPage) {
+    function navigateToPage(elementSelector, targetPage) {
+        document
+            .querySelector(elementSelector)
+            .addEventListener("click", function () {
+                window.location.href = targetPage;
+            });
+    }
+
+    function toggleBlockURLImage(url) {
+        chrome.storage.sync.get("blockedURLs", (data) => {
+            const blockedURLs = data.blockedURLs || [];
+            const blockURLButton = document.querySelector(".main-Block-URL");
+            if (blockedURLs.includes(url)) {
+                blockURLButton.src = "/images/Block-URL-check.svg";
+            } else {
+                blockURLButton.src = "/images/Block-URL.svg";
+            }
+        });
+    }
+
+    function toggleBlockURL() {
+        const urlInput = document.querySelector(".main-url-input").value;
+        if (!urlInput) {
+            alert("No URL to block/unblock");
+            return;
+        }
+
+        chrome.storage.sync.get("blockedURLs", (data) => {
+            let blockedURLs = data.blockedURLs || [];
+            const urlIndex = blockedURLs.indexOf(urlInput);
+
+            if (urlIndex === -1) {
+                if (confirm(`Do you want to block this URL: ${urlInput}?`)) {
+                    blockedURLs.push(urlInput);
+                    chrome.storage.sync.set({ blockedURLs }, () => {
+                        toggleBlockURLImage(urlInput);
+                        alert(`Blocked: ${urlInput}`);
+                    });
+                }
+            } else {
+                if (confirm(`Do you want to unblock this URL: ${urlInput}?`)) {
+                    blockedURLs.splice(urlIndex, 1);
+                    chrome.storage.sync.set({ blockedURLs }, () => {
+                        toggleBlockURLImage("");
+                        alert(`Unblocked: ${urlInput}`);
+                    });
+                }
+            }
+        });
+    }
+
+    async function fetchURLInfo() {
+        const urlInput = document.querySelector(".main-url-input").value.trim();
+        const alertIcon = document.querySelector(".main-alert-icon");
+
+        if (!urlInput) {
+            alert("Please enter a URL.");
+            return;
+        }
+
+        try {
+            const response = await fetch('http://127.0.0.1:5000/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({ url: urlInput })
+            });
+
+            const data = await response.json();
+
+            switch (parseInt(data.prediction)) {
+                case 0:
+                    alertIcon.src = "/images/check_circle.svg";
+                    break;
+                case 1:
+                    alertIcon.src = "/images/warning.svg";
+                    break;
+                case 2:
+                case 3:
+                    alertIcon.src = "/images/dangerous.svg";
+                    break;
+                default:
+                    alertIcon.src = "";
+            }
+
+            alertIcon.style.visibility = "visible";
+        } catch (error) {
+            console.error("Error fetching URL info:", error);
+        }
+    }
+
     document
-      .querySelector(elementSelector)
-      .addEventListener("click", function () {
-        window.location.href = targetPage;
-      });
-  }
+        .querySelector(".main-open-url")
+        .addEventListener("click", openUrlInNewTab);
 
-  // 차단된 URL 이미지 토글
-  function toggleBlockURLImage(url) {
-    chrome.storage.sync.get("blockedURLs", (data) => {
-      const blockedURLs = data.blockedURLs || [];
-      const blockURLButton = document.querySelector(".main-Block-URL");
-      if (blockedURLs.includes(url)) {
-        blockURLButton.src = "/images/Block-URL-check.svg";
-      } else {
-        blockURLButton.src = "/images/Block-URL.svg";
-      }
-    });
-  }
+    navigateToPage(".main-qr-scan-container", "image-upload.html");
+    navigateToPage(".main-qr-generate-container", "generate.html");
+    navigateToPage(".main-url-info-container", "url-info.html");
+    navigateToPage(".main-history-container", "history.html");
 
-  // URL 차단 및 차단 해제
-  function toggleBlockURL() {
-    const urlInput = document.querySelector(".main-url-input").value;
-    if (!urlInput) {
-      alert("No URL to block/unblock");
-      return;
-    }
+    document
+        .querySelector(".main-Block-URL-button")
+        .addEventListener("click", toggleBlockURL);
 
-    chrome.storage.sync.get("blockedURLs", (data) => {
-      let blockedURLs = data.blockedURLs || [];
-      const urlIndex = blockedURLs.indexOf(urlInput);
+    document
+        .querySelector(".main-Search-button")
+        .addEventListener("click", fetchURLInfo);
 
-      if (urlIndex === -1) {
-        if (confirm(`Do you want to block this URL: ${urlInput}?`)) {
-          blockedURLs.push(urlInput);
-          chrome.storage.sync.set({ blockedURLs }, () => {
-            toggleBlockURLImage(urlInput);
-            alert(`Blocked: ${urlInput}`);
-          });
-        }
-      } else {
-        if (confirm(`Do you want to unblock this URL: ${urlInput}?`)) {
-          blockedURLs.splice(urlIndex, 1);
-          chrome.storage.sync.set({ blockedURLs }, () => {
-            toggleBlockURLImage("");
-            alert(`Unblocked: ${urlInput}`);
-          });
-        }
-      }
-    });
-  }
+    document
+        .querySelector(".main-url-input")
+        .addEventListener("input", (event) => {
+            toggleBlockURLImage(event.target.value);
+        });
 
-  // main-open-url 버튼 클릭 이벤트
-  document
-    .querySelector(".main-open-url")
-    .addEventListener("click", openUrlInNewTab);
-
-  // 페이지 네비게이션 설정
-  navigateToPage(".main-qr-scan-container", "image-upload.html");
-  navigateToPage(".main-qr-generate-container", "generate.html");
-  navigateToPage(".main-url-info-container", "url-info.html");
-  navigateToPage(".main-history-container", "history.html");
-
-  // 차단 버튼 클릭 이벤트
-  document
-    .querySelector(".main-Block-URL-button")
-    .addEventListener("click", toggleBlockURL);
-
-  // URL 입력 필드의 input 이벤트 리스너 추가
-  document
-    .querySelector(".main-url-input")
-    .addEventListener("input", (event) => {
-      toggleBlockURLImage(event.target.value);
-    });
-
-  // 초기 차단된 URL 이미지 설정
-  toggleBlockURLImage(document.querySelector(".main-url-input").value);
+    toggleBlockURLImage(document.querySelector(".main-url-input").value);
 });

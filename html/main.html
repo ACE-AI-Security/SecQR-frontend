@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>SecQR</title>
-        <link rel="stylesheet" href="../css/main.css" />
-    </head>
-    <body>
-        <div id="SecQR-popup"></div>
-        <div class="container">
-            <div class="main-title-container">
-                <div class="main-title">SecQR</div>
-                <img src="/images/Topnav-open-url.svg" alt="main-open-url" class="main-open-url" />
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SecQR</title>
+    <link rel="stylesheet" href="../css/main.css" />
+</head>
+<body>
+    <div id="SecQR-popup"></div>
+    <div class="container">
+        <div class="main-title-container">
+            <div class="main-title">SecQR</div>
+            <img src="/images/Topnav-open-url.svg" alt="main-open-url" class="main-open-url" />
+        </div>
+        <div class="main-URL">
+            <div class="main-Block-URL-button">
+                <img src="/images/Block-URL.svg" alt="Block-URL" class="main-Block-URL" />
             </div>
-            <div class="main-URL">
-                <div class="main-Block-URL-button">
-                    <img src="/images/Block-URL.svg" alt="Block-URL" class="main-Block-URL" />
+            <div class="main-URL-input-container">
+                <input type="text" class="main-url-input" placeholder="Enter URL" />
+                <div class="main-alert">
+                    <img src="" alt="alert" class="main-alert-icon" style="visibility: hidden;" />
                 </div>
-                <div class="main-URL-input-container">
-                    <input type="text" class="main-url-input" placeholder="Enter URL" />
-                    <div class="main-Search-button">
-                        <img src="/images/Search.svg" alt="Search" class="main-Search" />
-                    </div>
+                <div class="main-Search-button">
+                    <img src="/images/Search.svg" alt="Search" class="main-Search" />
                 </div>
             </div>
-            <div class="main-container">
-                <div>
-                    <div class="main-qr-scan-container">
-                        <div class="main-qr-scan-sub-container">
+        </div>
+        <div class="main-container">
+            <div>
+                <div class="main-qr-scan-container">
+                    <div class="main-qr-scan-sub-container">
                         <div class="main-qr-image-container">
                             <img src="/images/qr-scan-blue.svg" alt="qr-scan" class="main-qr-scan-image" />
                         </div>
@@ -41,8 +44,9 @@
                         </div>
                         <div class="main-qr-generate-title">QR Generate</div>
                     </div>
-                </div></div>
-                <div>
+                </div>
+            </div>
+            <div>
                 <div class="main-url-info-container">
                     <div class="main-url-info-sub-container">
                         <div class="main-url-info-image-container">
@@ -51,7 +55,6 @@
                         <div class="main-url-info-title">URL Info</div>
                     </div>
                 </div>
-                
                 <div class="main-history-container">
                     <div class="main-history-sub-container">
                         <div class="main-history-image-container">
@@ -61,11 +64,6 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="navigation">
-                <img src="/images/home.svg" alt="home" class="navigation-home-image" />
-                <img src="/images/qr-scan-blue.svg" alt="qr-scan" class="navigation-qr-scan-image" />
-                <img src="/images/history-purple.svg" alt="history" class="navigation-history-image" />
-            </div> -->
         </div>
 
         <script src="../js/main.js"></script>

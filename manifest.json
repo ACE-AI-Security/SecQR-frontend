@@ -15,12 +15,8 @@
   "permissions": [
     "declarativeNetRequest",
     "declarativeNetRequestWithHostAccess",
-    "declarativeContent",
     "declarativeNetRequest",
-    "webNavigation",
-    "tabs",
     "clipboardRead",
-    "clipboardWrite",
     "activeTab",
     "storage"
   ],

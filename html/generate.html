@@ -1,40 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>SecQR</title>
-        <link rel="stylesheet" href="../css/generate.css" />
-    </head>
-    <body>
-        <div class="container">
-            <div class="Topnav">
-                <div class="Topnav-left-container">
-                    <img src="/images/Topnav-left-arrow.svg" alt="Topnav-left-arrow" class="Topnav-left-arrow" />
-                </div>
-                <div class="Topnav-title">Generate QR</div>
-                <div class="Topnav-right-container">
-                    <img src="/images/Topnav-open-url.svg" alt="Topnav-open-url" class="Topnav-open-url" />
-                </div>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SecQR</title>
+    <link rel="stylesheet" href="../css/generate.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="Topnav">
+            <div class="Topnav-left-container">
+                <img src="/images/Topnav-left-arrow.svg" alt="Topnav-left-arrow" class="Topnav-left-arrow" />
             </div>
-            <div class="generate-URL">
-                <div class="generate-URL-input-container">
-                    <input type="text" class="generate-url-input" placeholder="Enter URL" />
-                    <div class="generate-Download-button">
-                        <img src="/images/download-blue.svg" alt="Download" class="generate-Download" />
-                    </div>
-                </div>
+            <div class="Topnav-title">Generate QR</div>
+            <div class="Topnav-right-container">
+                <img src="/images/Topnav-open-url.svg" alt="Topnav-open-url" class="Topnav-open-url" />
             </div>
-            <div class="Image">
-                <img src="/images/Image-placeholder.svg" alt="Image-placeholder" class="Image-placeholder" />
-            </div>
-            <!-- <div class="generate-Download">
-                Download
-            </div> -->
         </div>
+        <div class="generate-URL">
+            <div class="generate-URL-input-container">
+                <input type="text" class="generate-url-input" placeholder="Enter URL" />
+                <div class="generate-qr-button">
+                    Generate
+                </div>
+            </div>
+        </div>
+        <div class="Image">
+            <img src="/images/Image-placeholder.svg" alt="Image-placeholder" class="Image-placeholder" />
+        </div>
+        <div class="generate-Download generate-Download-button">
+            Download
+        </div>
+    </div>
 
-        
-        <script src="../js/qrcode.min.js"></script>
-        <script src="../js/generate.js"></script>
-    </body>
+    <script src="../js/qrcode.min.js"></script>
+    <script src="../js/generate.js"></script>
+</body>
 </html>
