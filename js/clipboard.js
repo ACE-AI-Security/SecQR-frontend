@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
           const img = new Image();
           img.onload = () => {
             replaceImage(img);
-
             decodeQRFromImage(img);
           };
           img.src = event.target.result;
@@ -32,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     imageContainer.innerHTML = "";
     imageContainer.appendChild(newImage);
     uploadedImage = newImage;
-    placeholderImage.style.display = "block";
+    placeholderImage.style.display = "none";
   };
 
   const decodeQRFromImage = (img) => {
@@ -43,12 +42,11 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.drawImage(img, 0, 0, img.width, img.height);
     const imageData = ctx.getImageData(0, 0, img.width, img.height);
     const code = jsQR(imageData.data, imageData.width, imageData.height);
+    const urlInput = document.querySelector(".url-input");
     if (code) {
-      const urlInput = document.querySelector(".url-input");
       urlInput.value = code.data;
       toggleBlockURLImage(code.data);
     } else {
-      const urlInput = document.querySelector(".url-input");
       urlInput.value = "";
       toggleBlockURLImage("");
     }
@@ -109,32 +107,65 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  const topnavRightContainer = document.querySelector(
-    ".Topnav-right-container"
-  );
+  const fetchURLInfo = async () => {
+    const urlInput = document.querySelector(".url-input").value.trim();
+    const alertIcon = document.querySelector(".clipboard-alert-icon");
+
+    if (!urlInput) {
+      alert("Please enter a URL.");
+      return;
+    }
+
+    try {
+      const response = await fetch('http://127.0.0.1:5000/predict', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: new URLSearchParams({ url: urlInput })
+      });
+      const data = await response.json();
+
+      // 예측 값에 따라 아이콘 업데이트
+      switch (parseInt(data.prediction)) {
+        case 0:
+          alertIcon.src = "/images/check_circle.svg";
+          break;
+        case 1:
+          alertIcon.src = "/images/warning.svg";
+          break;
+        case 2:
+        case 3:
+          alertIcon.src = "/images/dangerous.svg";
+          break;
+        default:
+          alertIcon.src = "";
+      }
+
+      alertIcon.style.visibility = "visible"; // 아이콘 표시
+    } catch (error) {
+      console.error("Error fetching URL info:", error);
+    }
+  };
+
+  const topnavRightContainer = document.querySelector(".Topnav-right-container");
   topnavRightContainer.addEventListener("click", openDecodedURL);
 
-  document
-    .querySelector(".Block-URL-button")
-    .addEventListener("click", toggleBlockURL);
+  document.querySelector(".Block-URL-button").addEventListener("click", toggleBlockURL);
 
-  document
-    .querySelector(".Topnav-left-arrow")
-    .addEventListener("click", function () {
-      window.location.href = "main.html";
-    });
+  document.querySelector(".Search-button").addEventListener("click", fetchURLInfo);
 
-  document
-    .querySelector(".Nav-non-select:nth-child(1)")
-    .addEventListener("click", function () {
-      window.location.href = "image-upload.html";
-    });
+  document.querySelector(".Topnav-left-arrow").addEventListener("click", function () {
+    window.location.href = "main.html";
+  });
 
-  document
-    .querySelector(".Nav-non-select:nth-child(3)")
-    .addEventListener("click", function () {
-      window.location.href = "capture.html";
-    });
+  document.querySelector(".Nav-non-select:nth-child(1)").addEventListener("click", function () {
+    window.location.href = "image-upload.html";
+  });
+
+  document.querySelector(".Nav-non-select:nth-child(3)").addEventListener("click", function () {
+    window.location.href = "capture.html";
+  });
 
   document.addEventListener("paste", handleClipboardPaste);
 

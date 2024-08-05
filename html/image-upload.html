@@ -1,53 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>SecQR</title>
-        <link rel="stylesheet" href="../css/image-upload.css" />
-    </head>
-    <body>
-        <div class="container">
-            <div class="Topnav">
-                <div class="Topnav-left-container">
-                    <img src="/images/Topnav-left-arrow.svg" alt="Topnav-left-arrow" class="Topnav-left-arrow" />
-                </div>
-                <div class="Topnav-title">QR Scan</div>
-                <div class="Topnav-right-container">
-                    <img src="/images/Topnav-open-url.svg" alt="Topnav-open-url" class="Topnav-open-url" />
-                </div>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SecQR</title>
+    <link rel="stylesheet" href="../css/image-upload.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="Topnav">
+            <div class="Topnav-left-container">
+                <img src="/images/Topnav-left-arrow.svg" alt="Topnav-left-arrow" class="Topnav-left-arrow" />
             </div>
-            <div class="URL">
-                <div class="Block-URL-button">
-                    <img src="/images/Block-URL.svg" alt="Block-URL" class="Block-URL" />
-                </div>
-                <div class="URL-input-container">
-                    <input type="text" class="url-input" placeholder="Enter URL" />
-                    <div class="Search-button">
-                        <img src="/images/Search.svg" alt="Search" class="Search" />
-                    </div>
-                </div>
-            </div>
-            <div class="Nav">
-                <div class="Nav-select">Image</div>
-                <div class="Nav-non-select">Clipboard</div>
-                <div class="Nav-non-select">Capture</div>
-            </div>
-            <div class="Upload">
-                <div class="Upload-image-container">
-                    <img src="/images/Upload.svg" alt="Upload" class="Upload-img" />
-                </div>
-                <div class="Upload-text-container">
-                    <div class="Upload-text-1">Click to Upload</div>
-                    <div class="Upload-text-2">or drag and drop</div>
-                </div>
-            </div>
-            <div class="Image">
-                <img src="/images/Image-placeholder.svg" alt="Image-placeholder" class="Image-placeholder" />
+            <div class="Topnav-title">QR Scan</div>
+            <div class="Topnav-right-container">
+                <img src="/images/Topnav-open-url.svg" alt="Topnav-open-url" class="Topnav-open-url" />
             </div>
         </div>
+        <div class="URL">
+            <div class="Block-URL-button">
+                <img src="/images/Block-URL.svg" alt="Block-URL" class="Block-URL" />
+            </div>
+            <div class="URL-input-container">
+                <input type="text" class="url-input" placeholder="Enter URL" />
+                <div class="image-upload-alert">
+                    <img src="" alt="alert" class="image-upload-alert-icon" style="visibility: hidden;" />
+                </div>
+                <div class="Search-button">
+                    <img src="/images/Search.svg" alt="Search" class="Search" />
+                </div>
+            </div>
+        </div>
+        <div class="Nav">
+            <div class="Nav-select">Image</div>
+            <div class="Nav-non-select">Clipboard</div>
+            <div class="Nav-non-select">Capture</div>
+        </div>
+        <div class="Upload">
+            <div class="Upload-image-container">
+                <img src="/images/Upload.svg" alt="Upload" class="Upload-img" />
+            </div>
+            <div class="Upload-text-container">
+                <div class="Upload-text-1">Click to Upload</div>
+                <div class="Upload-text-2">or drag and drop</div>
+            </div>
+        </div>
+        <div class="Image">
+            <img src="/images/Image-placeholder.svg" alt="Image-placeholder" class="Image-placeholder" />
+        </div>
+    </div>
 
-        <script src="../js/jsQR.js"></script>
-        <script src="../js/image-upload.js"></script>
-    </body>
+    <script src="../js/jsQR.js"></script>
+    <script src="../js/image-upload.js"></script>
+</body>
 </html>
