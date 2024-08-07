@@ -22,7 +22,6 @@ const fetchURLInfo = async () => {
         const statusIcon = document.getElementById("status-icon");
         const statusText = document.getElementById("status-text");
         const iconGroup = document.getElementById("icon-group");
-
         switch (parseInt(data.prediction)) {
             case 0:
                 statusIcon.src = "/images/check_circle.svg";
