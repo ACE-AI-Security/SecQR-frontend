@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const response = await fetch('https://secqr-backend-flask-jiixy4725q-uc.a.run.app/predict', {
+      const response = await fetch('https://secqr-backend-jiixy4725q-an.a.run.app/predict', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
