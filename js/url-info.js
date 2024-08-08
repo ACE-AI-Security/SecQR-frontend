@@ -64,7 +64,7 @@ const fetchURLInfo = async () => {
     }
 
     try {
-        const response = await fetch('https://secqr-backend-flask-jiixy4725q-uc.a.run.app/predict', { // 서버 URL 수정
+        const response = await fetch('https://secqr-backend-jiixy4725q-an.a.run.app/predict', { // 서버 URL 수정
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
