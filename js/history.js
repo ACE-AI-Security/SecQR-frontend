@@ -1,18 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const blockedUrlList = document.querySelector(".blocked-url-list");
+  const blockedUrlListContainer = document.querySelector(".blocked-url-list-container");
+  
   document.querySelector('.Topnav-left-arrow').addEventListener('click', function() {
     window.location.href = 'main.html';
-});
+  });
 
   const renderBlockedUrls = () => {
     chrome.storage.sync.get("blockedURLs", (data) => {
       const blockedURLs = data.blockedURLs || [];
       console.log("Blocked URLs from storage:", blockedURLs);
-      blockedUrlList.innerHTML = ""; 
+      blockedUrlListContainer.innerHTML = ""; 
 
       blockedURLs.forEach((url, index) => {
-        const listItem = document.createElement("li");
-        listItem.textContent = url;
+        const listItem = document.createElement("div");
+        listItem.className = "blocked-url-list";
+        
+        const urlText = document.createElement("span");
+        urlText.className = "url-text";
+        urlText.textContent = url;
 
         const removeButton = document.createElement("button");
         removeButton.className = "remove-button";
@@ -26,8 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         removeButton.appendChild(closeIcon);
+        listItem.appendChild(urlText);
         listItem.appendChild(removeButton);
-        blockedUrlList.appendChild(listItem);
+        blockedUrlListContainer.appendChild(listItem);
       });
     });
   };
@@ -39,9 +45,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (confirm(`Do you want to unblock this URL: ${urlToUnblock}?`)) {
         blockedURLs.splice(index, 1);
-        chrome.storage.sync.set({ blockedURLs }, () => {
-          renderBlockedUrls();
+        chrome.storage.sync.set({ blockedURLs: blockedURLs }, () => {
           alert(`Unblocked: ${urlToUnblock}`);
+          renderBlockedUrls();
         });
       }
     });
@@ -49,4 +55,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderBlockedUrls();
 });
-

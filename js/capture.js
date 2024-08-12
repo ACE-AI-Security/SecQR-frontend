@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    try {http
+    try {
       const response = await fetch('https://secqr-backend-jiixy4725q-an.a.run.app/predict', {
         method: 'POST',
         headers: {

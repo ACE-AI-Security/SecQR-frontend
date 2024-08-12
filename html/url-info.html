@@ -28,45 +28,46 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <hr style="border: solid 1px rgb(207, 207, 207); width:90%;">
     <div class="content">
         <div id="result">
             <!-- URL 정보가 여기에 표시됩니다 -->
         </div>
         <div class="card">
             <div class="icon-group" id="icon-group" style="visibility: hidden;">
-                <img id="status-icon" src="" alt="status"/>
-                <span id="status-text" style="font-size:16px"></span>
+                <img class="status-icon" id="status-icon" src="" alt="status"/>
+                <div class="status-text" id="status-text"></div>
             </div>
-            <button id="togglebutton" class="icon">
-                <img src="/images/ArrowDown.svg" alt="Arrow Down"/>
+            <button class="icon" id="togglebutton">
+                <img src="/images/ArrowDown.svg" alt="Arrow Down" class="Arrow Down"/>
             </button>
         </div>
+        <hr class="hr" id="hr">
         <div class="toggle-content">
             <div class="toggle-item">
-                <span>Parameter length</span>
-                <span id="parameter-length-value"></span>
+                <div>Parameter length</div>
+                <div class="parameter-length-value" id="parameter-length-value"></div>
             </div>
             <div class="toggle-item">
-                <span>Having_ip_address</span>
-                <img id="ip-address-icon" src="/images/Close.svg" alt="dangerous" />
+                <div>Having ip address</div>
+                <img class="ip-address-icon" id="ip-address-icon" src="/images/check_gray.svg" alt="dangerous" />
             </div>
             <div class="toggle-item">
-                <span>Protocol</span>
-                <img id="protocol-icon" src="/images/Right Button.svg" alt="Right Button" />
+                <div>Protocol</div>
+                <img class="protocol-icon" id="protocol-icon" src="/images/Right Button.svg" alt="Right Button" />
             </div>
             <div class="toggle-item">
-                <span>Sub_domain</span>
-                <img id="sub-domain-icon" src="/images/Close.svg" alt="dangerous" />
+                <div>Sub Domain</div>
+                <img class="sub-domain-icon" id="sub-domain-icon" src="/images/Close.svg" alt="dangerous" />
             </div>
             <div class="toggle-item">
-                <span>Abnormal_url</span>
-                <img id="abnormal-url-icon" src="/images/Close.svg" alt="dangerous" />
+                <div>Abnormal URL</div>
+                <img class="abnormal-url-icon" id="abnormal-url-icon" src="/images/Close.svg" alt="dangerous" />
             </div>
         </div>
     </div>
+    </div>
+
+    
 
     <script src="../js/url-info.js"></script>
 </body>

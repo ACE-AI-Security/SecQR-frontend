@@ -78,11 +78,31 @@ body {
 .url-input {
   border: none;
   background-color: transparent;
-  margin: 10px 12px 10px 16px;
+  margin: 10px 10px 10px 16px;
   outline: none;
   font-size: 14px;
-  width: 239px;
-  font-family: "Pretendard-Regular";
+  width: 209px;
+  font-family: 'Pretendard-Regular';
+}
+
+input[type="text" i] {
+  padding: 0;
+}
+
+.capture-alert {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 21px;
+  height: 21px;
+  margin: 0px 10px 0px 0px;
+}
+.capture-alert-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 21px;
+  height: 21px;
 }
 .Search-button {
   display: flex;
