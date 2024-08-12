@@ -1,65 +1,96 @@
-  @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap");
-  @font-face {
-    font-family: "Pretendard-Regular";
-    src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
-      format("woff");
-    font-weight: 400;
-    font-style: normal;
-  }
-  body {
-    margin: 0;
-    -ms-overflow-style: none;
-    font-family: "Pretendard-Regular";
-    height: 600px;
-  }
-  
-  ::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .container {
-    background: transparent;
-    width: 375px;
-  }
-  .Topnav {
-    width: 375px;
-    height: 64px;
-    justify-content: space-between;
-    display: flex;
-  }
-  .Topnav-left-container,
-  .Topnav-right-container {
-    cursor: pointer;
-  }
-  .Topnav-left-arrow {
-    width: 20px;
-    height: 20px;
-    margin: 25px 0px 19px 36px;
-  }
-  .Topnav-title {
-    font-size: 16px;
-    font-weight: 800;
-    margin-top: 25.5px;
-    font-family: "DM Sans";
-  }
-  .Topnav-open-url {
-    width: 26px;
-    height: 26px;
-    margin: 22px 36px 16px 0px;
-    filter: brightness(0) invert(1);
-  }
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap");
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+body {
+  margin: 0;
+  -ms-overflow-style: none;
+  font-family: "Pretendard-Regular";
+  height: 600px;
+}
 
-  .blocked-url-list {
-    list-style-type: none;
-    padding: 0;
-  }
-  .blocked-url-list li {
-    display: flex;
-    justify-content: space-between;
-    margin: 5px 0;
-  }
-  .remove-button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-  }
+::-webkit-scrollbar {
+  display: none;
+}
+
+.container {
+  background: transparent;
+  width: 375px;
+  overflow-y: auto; 
+}
+.Topnav {
+  width: 375px;
+  height: 64px;
+  justify-content: space-between;
+  display: flex;
+}
+.Topnav-left-container,
+.Topnav-right-container {
+  cursor: pointer;
+}
+.Topnav-left-arrow {
+  width: 20px;
+  height: 20px;
+  margin: 25px 0px 19px 36px;
+}
+.Topnav-title {
+  font-size: 16px;
+  font-weight: 800;
+  margin-top: 25.5px;
+  font-family: "DM Sans";
+}
+.Topnav-open-url {
+  width: 26px;
+  height: 26px;
+  margin: 22px 36px 16px 0px;
+  filter: brightness(0) invert(1);
+}
+
+.history-title {
+  letter-spacing: 0.05em;
+  text-align: left;
+  color: #71727A;
+  font-weight: 600;
+  font-size: 12px;
+  margin: 16px 0px 8px 32px;
+  font-family: "Pretendard-Regular";
+}
+
+.blocked-url-list-container {
+  margin-left: 32px;
+  padding-right: 32px;
+  overflow: hidden;
+}
+
+.blocked-url-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+  font-family: "Pretendard-Regular";
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 8px; 
+}
+
+.url-text {
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 1; 
+  margin-right: 10px; 
+  max-width: calc(100% - 50px); 
+}
+
+.remove-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0; 
+  width: 26px; 
+  height: 26px;
+}

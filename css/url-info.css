@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap");
-
 @font-face {
     font-family: "Pretendard-Regular";
-    src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
+    src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
     font-weight: 400;
     font-style: normal;
 }
@@ -20,46 +20,40 @@ body {
 .container {
     background: transparent;
     width: 375px;
+    height: 600px;
 }
-
 .Topnav {
     width: 375px;
     height: 64px;
     justify-content: space-between;
     display: flex;
 }
-
 .Topnav-left-container,
 .Topnav-right-container {
     cursor: pointer;
 }
-
 .Topnav-left-arrow {
     width: 20px;
     height: 20px;
     margin: 25px 0px 19px 36px;
 }
-
 .Topnav-title {
     font-size: 16px;
     font-weight: 800;
     margin-top: 25.5px;
     font-family: "DM Sans";
 }
-
 .Topnav-open-url {
     width: 26px;
     height: 26px;
     margin: 22px 36px 16px 0px;
 }
-
 .URL {
     display: flex;
     align-items: center;
     height: 40px;
     margin: 5px 16px 0px 16px;
 }
-
 .Block-URL-button {
     margin: 0;
     width: 16px;
@@ -68,7 +62,6 @@ body {
     justify-content: center;
     display: flex;
 }
-
 .Block-URL {
     width: 18px;
     height: 18px;
@@ -84,7 +77,6 @@ body {
     padding: 0;
     margin-left: 14px;
 }
-
 .url-input {
     border: none;
     background-color: transparent;
@@ -94,7 +86,6 @@ body {
     width: 239px;
     font-family: "Pretendard-Regular";
 }
-
 .Search-button {
     display: flex;
     justify-content: center;
@@ -108,61 +99,49 @@ body {
     height: 32px;
 }
 
+
 .content {
-    padding: 16px;
+    margin: 16px;
 }
-
-.input-group {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 16px;
-}
-
-.input-group input {
-    flex: 1;
-    padding: 8px;
-    border: 1px solid #ffffff;
-    border-radius: 4px;
-}
-
 .card {
-    border: 1px solid #ffffff;
-    padding: 8px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
-    border-radius: 4px;
-    margin-bottom: 16px;
+    margin: 24px 0px 20px 0px;
 }
-
 .icon-group {
     display: flex;
     align-items: center;
-    gap: 8px;
+}
+.status-icon{
+    margin-left: 5px;
+}
+.status-text{
+    font-size: 17px;
+    font-weight: 500;
+    margin-left: 16px;
 }
 
 .toggle-content {
     display: none;
-    margin-top: 16px;
+    margin: 24px 8px 0px 8px;
 }
-
 .toggle-content.active {
     display: block;
 }
-
 .toggle-item {
     display: flex;
     font-size: 14px;
+    font-weight: 400;
     align-items: center;
     justify-content: space-between;
-    padding: 8px;
-    border: 1px solid #d1d5db;
-    border-radius: 4px;
-    margin-bottom: 8px;
+    border: 1px solid #C5C6CC;
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
 }
-
 .icon {
     width: 24px;
     height: 24px;
@@ -171,12 +150,13 @@ body {
     padding: 0;
     cursor: pointer;
 }
-
 .icon img {
     width: 100%;
     height: 100%;
 }
-
-hr {
-    margin-top: 30px;
+.hr {
+    border: none;
+    height: 0.5px;
+    background-color: #C5C6CC;
+    border-radius: 4px; 
 }
