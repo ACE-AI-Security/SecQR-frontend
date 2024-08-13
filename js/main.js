@@ -84,9 +84,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     alertIcon.src = "/images/check_circle.svg";
                     break;
                 case 1:
-                    alertIcon.src = "/images/warning.svg";
+                    alertIcon.src = "/images/dangerous.svg";
                     break;
                 case 2:
+                    alertIcon.src = "/images/dangerous.svg";
+                    break;
                 case 3:
                     alertIcon.src = "/images/dangerous.svg";
                     break;

@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                     statusText.innerText = "Malware URL";
                     break;
                 default:
-                    statusIcon.src = "/images/unknown.svg";
+                    statusIcon.src = "";
                     statusText.innerText = "Unknown Status";
             }
             iconGroup.style.visibility = "visible"; 
