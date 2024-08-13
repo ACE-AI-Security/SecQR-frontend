@@ -94,6 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     break;
                 default:
                     alertIcon.src = "";
+                    
             }
 
             alertIcon.style.visibility = "visible";

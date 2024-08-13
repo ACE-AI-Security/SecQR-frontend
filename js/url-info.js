@@ -134,5 +134,7 @@ document.querySelector(".Topnav-left-arrow").addEventListener("click", function 
 const urlInput = document.querySelector(".url-input");
 urlInput.addEventListener("input", () => {
     const url = urlInput.value.trim();
+    
     toggleBlockURLImage(url);
 });
+
