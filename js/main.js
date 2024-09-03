@@ -128,3 +128,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
     toggleBlockURLImage(document.querySelector(".main-url-input").value);
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    // 기존 코드...
+
+    function positionTooltip(button, tooltip) {
+        const buttonRect = button.getBoundingClientRect();
+        tooltip.style.left = `${buttonRect.left + window.scrollX}px`;
+        tooltip.style.top = `${buttonRect.top + buttonRect.height + window.scrollY}px`;
+    }
+
+    const searchButton = document.querySelector(".main-Search-button");
+    const searchTooltip = document.querySelector(".tooltip-search");
+
+    searchButton.addEventListener("mouseover", () => {
+        positionTooltip(searchButton, searchTooltip);
+        searchTooltip.style.display = "block";
+    });
+
+    searchButton.addEventListener("mouseout", () => {
+        searchTooltip.style.display = "none";
+    });
+
+    const blockButton = document.querySelector(".main-Block-URL-button");
+    const blockTooltip = document.querySelector(".tooltip-block");
+
+    blockButton.addEventListener("mouseover", () => {
+        positionTooltip(blockButton, blockTooltip);
+        blockTooltip.style.display = "block";
+    });
+
+    blockButton.addEventListener("mouseout", () => {
+        blockTooltip.style.display = "none";
+    });
+});

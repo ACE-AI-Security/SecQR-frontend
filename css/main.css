@@ -271,3 +271,22 @@ input[type="text" i] {
     margin: 0px 65px 0px 0px;
     filter: invert(94%) sepia(71%) saturate(13%) hue-rotate(234deg) brightness(104%) contrast(62%);
 }
+
+.tooltip {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 1000;
+    /* 기본적으로 툴팁을 숨깁니다. */
+}
+
+/* 버튼에 마우스를 올렸을 때 툴팁 표시 */
+.main-Search-button:hover .tooltip-search,
+.main-Block-URL-button:hover .tooltip-block {
+    display: block;
+}
