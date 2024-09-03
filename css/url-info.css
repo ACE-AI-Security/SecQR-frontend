@@ -109,6 +109,7 @@ body {
     justify-content: space-between;
     cursor: pointer;
     margin: 24px 0px 20px 0px;
+    height: 21px;
 }
 .icon-group {
     display: flex;
