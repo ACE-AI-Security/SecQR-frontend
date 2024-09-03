@@ -4,6 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const placeholderImage = document.querySelector(".Image-placeholder");
   let uploadedImage = null;
 
+  // URL 입력 필드 비활성화
+  const urlInput = document.querySelector(".url-input");
+  urlInput.disabled = true;
+
   const handleClipboardPaste = (event) => {
     const items = event.clipboardData.items;
     for (let i = 0; i < items.length; i++) {
@@ -42,10 +46,11 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.drawImage(img, 0, 0, img.width, img.height);
     const imageData = ctx.getImageData(0, 0, img.width, img.height);
     const code = jsQR(imageData.data, imageData.width, imageData.height);
-    const urlInput = document.querySelector(".url-input");
     if (code) {
-      urlInput.value = code.data;
-      toggleBlockURLImage(code.data);
+      const decodedURL = code.data;
+      urlInput.value = decodedURL;
+      toggleBlockURLImage(decodedURL);
+      fetchURLInfo(decodedURL); // 디코딩되면 자동으로 서버에 전송
     } else {
       urlInput.value = "";
       toggleBlockURLImage("");
@@ -53,7 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const openDecodedURL = () => {
-    const urlInput = document.querySelector(".url-input");
     const decodedURL = urlInput.value;
     if (decodedURL) {
       window.open(decodedURL, "_blank");
@@ -75,7 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const toggleBlockURL = () => {
-    const urlInput = document.querySelector(".url-input");
     const urlToBlock = urlInput.value.trim();
 
     if (!urlToBlock) {
@@ -107,14 +110,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  const fetchURLInfo = async () => {
-    const urlInput = document.querySelector(".url-input").value.trim();
+  const fetchURLInfo = async (url) => {
     const alertIcon = document.querySelector(".clipboard-alert-icon");
-
-    if (!urlInput) {
-      alert("Please enter a URL.");
-      return;
-    }
 
     try {
       const response = await fetch('https://secqr-backend-jiixy4725q-an.a.run.app/predict', {
@@ -122,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: new URLSearchParams({ url: urlInput })
+        body: new URLSearchParams({ url: url })
       });
       const data = await response.json();
 
@@ -135,6 +132,8 @@ document.addEventListener("DOMContentLoaded", () => {
           alertIcon.src = "/images/warning.svg";
           break;
         case 2:
+          alertIcon.src = "/images/dangerous.svg";
+          break;
         case 3:
           alertIcon.src = "/images/dangerous.svg";
           break;
@@ -153,8 +152,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelector(".Block-URL-button").addEventListener("click", toggleBlockURL);
 
-  document.querySelector(".Search-button").addEventListener("click", fetchURLInfo);
-
   document.querySelector(".Topnav-left-arrow").addEventListener("click", function () {
     window.location.href = "main.html";
   });
@@ -169,7 +166,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.addEventListener("paste", handleClipboardPaste);
 
-  const urlInput = document.querySelector(".url-input");
   urlInput.addEventListener("input", () => {
     const url = urlInput.value.trim();
     toggleBlockURLImage(url);

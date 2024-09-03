@@ -9,6 +9,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let uploadedImage = null;
 
+  // URL 입력 필드 비활성화
+  const urlInput = document.querySelector(".url-input");
+  urlInput.disabled = true;
+
   const handleFile = (file) => {
     const reader = new FileReader();
     reader.onload = (event) => {
@@ -35,10 +39,10 @@ document.addEventListener("DOMContentLoaded", () => {
           qrCanvas.height
         );
         const code = jsQR(imageData.data, imageData.width, imageData.height);
-        const urlInput = document.querySelector(".url-input");
         if (code) {
           urlInput.value = code.data;
           toggleBlockURLImage(code.data);
+          fetchURLInfo();  // URL 디코딩 후 자동으로 서버에 전송
         } else {
           urlInput.value = "";
           toggleBlockURLImage("");
@@ -76,7 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const openDecodedURL = () => {
-    const urlInput = document.querySelector(".url-input");
     const decodedURL = urlInput.value;
     if (decodedURL) {
       window.open(decodedURL, "_blank");
@@ -98,7 +101,6 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const toggleBlockURL = () => {
-    const urlInput = document.querySelector(".url-input");
     const urlToBlock = urlInput.value.trim();
 
     if (!urlToBlock) {
@@ -131,10 +133,10 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const fetchURLInfo = async () => {
-    const urlInput = document.querySelector(".url-input").value.trim();
+    const urlToFetch = urlInput.value.trim();
     const alertIcon = document.querySelector(".image-upload-alert-icon");
 
-    if (!urlInput) {
+    if (!urlToFetch) {
       alert("Please enter a URL.");
       return;
     }
@@ -145,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: new URLSearchParams({ url: urlInput })
+        body: new URLSearchParams({ url: urlToFetch })
       });
       const data = await response.json();
 
@@ -191,7 +193,6 @@ document.addEventListener("DOMContentLoaded", () => {
       uploadedImage.remove();
       uploadedImage = null;
       placeholderImage.style.display = "block";
-      const urlInput = document.querySelector(".url-input");
       urlInput.value = "";
       toggleBlockURLImage("");
     }
@@ -199,18 +200,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelector(".Block-URL-button").addEventListener("click", toggleBlockURL);
 
-  document.querySelector(".Search-button").addEventListener("click", fetchURLInfo);
-
   addDragAndDropHandlers(uploadContainer);
   addDragAndDropHandlers(imageContainer);
 
   document.body.appendChild(fileInput);
-
-  const urlInput = document.querySelector(".url-input");
-  urlInput.addEventListener("input", () => {
-    const url = urlInput.value.trim();
-    toggleBlockURLImage(url);
-  });
 
   toggleBlockURLImage(urlInput.value);
 

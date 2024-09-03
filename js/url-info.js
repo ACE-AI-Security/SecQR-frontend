@@ -8,18 +8,6 @@ const openDecodedURL = () => {
     }
 };
 
-const toggleBlockURLImage = (url) => {
-    chrome.storage.sync.get("blockedURLs", (data) => {
-        const blockedURLs = data.blockedURLs || [];
-        const blockURLButton = document.querySelector(".Block-URL");
-        if (blockedURLs.includes(url)) {
-            blockURLButton.src = "/images/Block-URL-check.svg";
-        } else {
-            blockURLButton.src = "/images/Block-URL.svg";
-        }
-    });
-};
-
 const toggleBlockURL = () => {
     const urlInput = document.querySelector(".url-input");
     const urlToBlock = urlInput.value.trim();
@@ -50,26 +38,27 @@ const toggleBlockURL = () => {
     });
 };
 
-const displayURLInfo = (urlInfo) => {
-    const { parameter_len, having_ip_address, protocol, sub_domain, abnormal_url } = urlInfo;
-    document.getElementById('parameter-length-value').innerText = parameter_len;
-    document.getElementById('ip-address-icon').src = having_ip_address ? "/images/check_gray.svg" : "/images/Right Button.svg";
-    document.getElementById('protocol-icon').src = protocol ? "/images/check_gray.svg" : "/images/Right Button.svg";
-    document.getElementById('sub-domain-icon').src = sub_domain ? "/images/check_gray.svg" : "/images/Right Button.svg";
-    document.getElementById('abnormal-url-icon').src = abnormal_url ? "/images/check_gray.svg" : "/images/Right Button.svg";
+const toggleBlockURLImage = (url) => {
+    chrome.storage.sync.get("blockedURLs", (data) => {
+        const blockedURLs = data.blockedURLs || [];
+        const blockURLButton = document.querySelector(".Block-URL");
+        if (blockedURLs.includes(url)) {
+            blockURLButton.src = "/images/Block-URL-check.svg";
+        } else {
+            blockURLButton.src = "/images/Block-URL.svg";
+        }
+    });
 };
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    const button = document.getElementById('togglebutton');
     const content = document.querySelector('.toggle-content');
-    let isResultFetched = false; 
-    button.addEventListener('click', () => {
-        if (isResultFetched) {
-            content.classList.toggle('active');
-        } else {
-            alert('Please fetch the URL info first.');
-        }
-    });
+    content.classList.add('active'); 
+   
+    document.getElementById('parameter-length-value').innerText = ''; 
+    document.getElementById('ip-address-icon').src = "/images/check_gray.svg"; 
+    document.getElementById('protocol-icon').src = "/images/check_gray.svg";
+    document.getElementById('sub-domain-icon').src = "/images/check_gray.svg";
+    document.getElementById('abnormal-url-icon').src = "/images/check_gray.svg";
 
     const fetchURLInfo = async () => {
         const urlInput = document.querySelector(".url-input");
@@ -115,26 +104,34 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
             iconGroup.style.visibility = "visible"; 
             displayURLInfo(data.url_info);
-            isResultFetched = true; 
         } catch (error) {
             console.error("Error fetching URL info:", error);
-            isResultFetched = false; 
         }
     };
 
     document.querySelector(".Search-button").addEventListener("click", fetchURLInfo);
 });
 
+const displayURLInfo = (urlInfo) => {
+    const { parameter_len, having_ip_address, protocol, sub_domain, abnormal_url } = urlInfo;
+    document.getElementById('parameter-length-value').innerText = parameter_len !== undefined ? parameter_len : ''; // 파라미터 길이 업데이트
+    document.getElementById('ip-address-icon').src = having_ip_address ? "/images/check_gray.svg" : "/images/Right Button.svg";
+    document.getElementById('protocol-icon').src = protocol ? "/images/check_gray.svg" : "/images/Right Button.svg";
+    document.getElementById('sub-domain-icon').src = sub_domain ? "/images/check_gray.svg" : "/images/Right Button.svg";
+    document.getElementById('abnormal-url-icon').src = abnormal_url ? "/images/check_gray.svg" : "/images/Right Button.svg";
+};
+
 const topnavRightContainer = document.querySelector(".Topnav-right-container");
 topnavRightContainer.addEventListener("click", openDecodedURL);
+
 document.querySelector(".Block-URL-button").addEventListener("click", toggleBlockURL);
+
 document.querySelector(".Topnav-left-arrow").addEventListener("click", function () {
     window.location.href = "main.html";
 });
+
 const urlInput = document.querySelector(".url-input");
 urlInput.addEventListener("input", () => {
     const url = urlInput.value.trim();
-    
     toggleBlockURLImage(url);
 });
-
