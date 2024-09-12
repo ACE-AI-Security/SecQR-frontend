@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const alertIcon = document.querySelector(".clipboard-alert-icon");
 
     try {
-      const response = await fetch('https://secqr-backend-jiixy4725q-an.a.run.app/predict', {
+      const response = await fetch('https://secqr-backend-326060264822.asia-northeast1.run.app/predict', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
