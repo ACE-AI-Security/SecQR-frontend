@@ -10,6 +10,9 @@ body {
   margin: 0;
   -ms-overflow-style: none;
   font-family: "Pretendard-Regular";
+  background: #eefaff;
+  width: 375px;
+  overflow: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -17,48 +20,65 @@ body {
 }
 
 .container {
-  background: transparent;
-  width: 375px;
+  background: #eefaff url("/images/QR-Scan-Star.svg") no-repeat center 48px;
+  background-size: cover;
+  position: relative;
 }
+
 .Topnav {
-  width: 375px;
-  height: 64px;
   justify-content: space-between;
   display: flex;
+  margin: 28px 17px 0px 17px;
+  align-items: center;
+  height: 46px;
 }
 .Topnav-left-container,
 .Topnav-right-container {
   cursor: pointer;
+  margin: 0;
+  height: 46px;
 }
 .Topnav-left-arrow {
-  width: 20px;
-  height: 20px;
-  margin: 25px 0px 19px 36px;
+  width: 46px;
+  height: 46px;
+  margin: 0px 37px 0px 0px;
 }
 .Topnav-title {
-  font-size: 16px;
+  font-size: 24px;
   font-weight: 800;
-  margin-top: 25.5px;
   font-family: "DM Sans";
+  color: #225c4b;
 }
 .Topnav-open-url {
-  width: 26px;
-  height: 26px;
-  margin: 22px 36px 16px 0px;
+  width: 46px;
+  height: 46px;
+  margin: 0px 0px 0px 37px;
+}
+.QR-Scan-3D {
+  margin: 46px 126px 19.2px 125px;
+}
+.Modal {
+  background-color: white;
+  border-radius: 20px 20px 0 0;
+  padding-top: 19.2px;
+  padding-bottom: 31px;
+  position: relative;
 }
 .URL {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  height: 40px;
-  margin: 5px 16px 0px 16px;
+  margin: 4.6px 20px 0px 20px;
 }
 .Block-URL-button {
-  margin: 0;
-  width: 16px;
-  height: 16px;
-  padding: 0;
+  width: 38px;
+  height: 40px;
+  align-items: center;
   justify-content: center;
   display: flex;
+  background-color: #ffe7e7;
+  border-radius: 7px;
+  margin: 0px;
 }
 .Block-URL {
   width: 18px;
@@ -67,22 +87,24 @@ body {
 }
 
 .URL-input-container {
-  background-color: #eaf2ff;
-  border-radius: 71px;
+  background-color: #f9f9f9;
+  border-radius: 100px;
+  width: 280px;
   height: 40px;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 0;
-  margin-left: 14px;
+  margin-left: 17px;
 }
 .url-input {
   border: none;
   background-color: transparent;
-  margin: 10px 10px 10px 16px;
   outline: none;
-  font-size: 14px;
-  width: 209px;
-  font-family: 'Pretendard-Regular';
+  font-size: 16px;
+  margin-left: 8px;
+  padding: 0;
+  font-family: "Pretendard-Regular";
 }
 
 input[type="text" i] {
@@ -93,8 +115,7 @@ input[type="text" i] {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 21px;
-  height: 21px; 
+  height: 21px;
   margin: 0px 10px 0px 0px;
 }
 .image-upload-alert-icon {
@@ -117,32 +138,49 @@ input[type="text" i] {
   height: 32px;
 }
 .Nav {
+  height: 46px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   text-align: center;
-  margin: 12px 51px 0px 51px;
+  margin: 21px 20px 0px 20px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  padding: 0px 25px;
 }
-.Nav-select {
-  display: inline-block;
-  border-bottom: 2.5px solid #006ffd;
-  line-height: 25.5px;
-  width: auto;
-  font-size: 18px;
-  font-weight: 600;
-  color: #006ffd;
-  cursor: pointer;
-}
+
+.Nav-select,
 .Nav-non-select {
-  display: inline-block;
-  border-bottom: 0px solid #006ffd;
-  line-height: 25.5px;
-  font-size: 18px;
-  font-weight: 500;
-  color: #c5c6cc;
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  font-size: 16px;
 }
+
+.Nav-select {
+  font-weight: 600;
+  color: #225c4b;
+  cursor: pointer;
+  border-right: 2px solid #c4c4c4;
+  padding-right: 8px;
+}
+
+.Nav-non-select {
+  font-weight: 500;
+  color: #c4c4c4;
+  cursor: pointer;
+  padding-right: 0px;
+}
+
+.Nav-non-select:not(:last-child) {
+  border-right: 2px solid #c4c4c4;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
 .Upload {
-  border: 2px dashed #cacaca;
+  background-color: #f9f9f9;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -150,7 +188,7 @@ input[type="text" i] {
   justify-content: center;
   height: 110px;
   margin: 12px 24px 0px 23px;
-  border-radius: 6px;
+  border-radius: 12px;
   cursor: pointer;
 }
 
