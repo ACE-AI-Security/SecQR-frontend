@@ -20,7 +20,7 @@ body {
 }
 
 .container {
-  background: #eefaff url("/images/QR-Scan-Star.svg") no-repeat center 48px;
+  background: #eefaff url("/images/QR-Scan-Star.svg") no-repeat center 40px;
   background-size: cover;
   position: relative;
 }
@@ -28,7 +28,7 @@ body {
 .Topnav {
   justify-content: space-between;
   display: flex;
-  margin: 28px 17px 0px 17px;
+  margin: 20px 17px 0px 17px;
   align-items: center;
   height: 46px;
 }
@@ -36,26 +36,26 @@ body {
 .Topnav-right-container {
   cursor: pointer;
   margin: 0;
-  height: 46px;
+  height: 42px;
 }
 .Topnav-left-arrow {
-  width: 46px;
-  height: 46px;
+  width: 42px;
+  height: 42px;
   margin: 0px 37px 0px 0px;
 }
 .Topnav-title {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 800;
   font-family: "DM Sans";
   color: #225c4b;
 }
 .Topnav-open-url {
-  width: 46px;
-  height: 46px;
+  width: 42px;
+  height: 42px;
   margin: 0px 0px 0px 37px;
 }
 .QR-Scan-3D {
-  margin: 46px 126px 19.2px 125px;
+  margin: 39px 126px 20px 125px;
 }
 .Modal {
   background-color: white;
@@ -87,7 +87,7 @@ body {
 }
 
 .URL-input-container {
-  background-color: #f9f9f9;
+  background-color: #F2F2F2;
   border-radius: 100px;
   width: 280px;
   height: 40px;
@@ -144,7 +144,7 @@ input[type="text" i] {
   align-items: center;
   text-align: center;
   margin: 21px 20px 0px 20px;
-  background-color: #f9f9f9;
+  background-color: #F2F2F2;
   border-radius: 12px;
   padding: 0px 25px;
 }
@@ -180,16 +180,18 @@ input[type="text" i] {
 }
 
 .Upload {
-  background-color: #f9f9f9;
+  background-color: #F2F2F2;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 110px;
-  margin: 12px 24px 0px 23px;
+  height: 144.2px;
+  margin: 24px 20px 0px 20px;
   border-radius: 12px;
   cursor: pointer;
+  overflow: hidden;
+  position: relative;
 }
 
 .Upload-image-container {
@@ -198,12 +200,20 @@ input[type="text" i] {
   width: 44px;
   height: 44px;
   margin-bottom: 12px;
-  background-color: #f5f5f5;
+  background-color: #F9F9F9;
   justify-content: center;
   display: flex;
   align-items: center;
 }
-
+.Upload img {
+  max-width: 100%; /* 부모 요소의 너비를 넘지 않도록 */
+  max-height: 100%; /* 부모 요소의 높이를 넘지 않도록 */
+  object-fit: contain; /* 이미지의 비율을 유지하며 부모 요소에 맞추기 */
+  position: absolute; /* 이미지 중앙 배치를 위해 추가 */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 부모 요소 안에서 중앙으로 이동 */
+}
 .Upload-img {
   width: 24px;
   height: 24px;
@@ -215,6 +225,12 @@ input[type="text" i] {
   justify-content: center;
   align-items: center;
   white-space: nowrap;
+  visibility: visible;
+  opacity: 1;
+}
+.hidden {
+  visibility: hidden;
+  opacity: 0;
 }
 
 .Upload-text-1 {
@@ -227,23 +243,7 @@ input[type="text" i] {
   font-weight: 400;
   font-size: 14px;
 }
-.Image {
-  background-color: #eaf2ff;
-  width: 319px;
-  height: 299px;
-  border-radius: 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  margin: 10px 28px 16.9px 28px;
-}
-.Image img {
-  max-width: 100%;
-  max-height: 100%;
-  height: auto;
-  width: auto;
-}
+
 .Upload.dragover,
 .Image.dragover {
   background-color: #f0f0f0;
