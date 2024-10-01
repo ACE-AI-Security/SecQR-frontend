@@ -1,13 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
   const uploadContainer = document.querySelector(".Upload");
-  const imageContainer = document.querySelector(".Image");
-  const placeholderImage = document.querySelector(".Image-placeholder");
+  const imageContainer = document.querySelector(".Upload-image-container");
+  const textContainer = document.querySelector(".Upload-text-container");
   const fileInput = document.createElement("input");
   fileInput.type = "file";
   fileInput.accept = "image/*";
   fileInput.style.display = "none";
 
   let uploadedImage = null;
+  const alertIcon = document.querySelector(".image-upload-alert-icon"); // alertIcon 요소 선택
 
   // URL 입력 필드 비활성화
   const urlInput = document.querySelector(".url-input");
@@ -19,6 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (uploadedImage) {
         uploadedImage.remove();
       }
+
+      // 이미지 업로드 시 alertIcon 숨기기
+      alertIcon.style.visibility = "hidden";
+
       uploadedImage = document.createElement("img");
       uploadedImage.onload = () => {
         const qrCanvas = document.createElement("canvas");
@@ -42,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (code) {
           urlInput.value = code.data;
           toggleBlockURLImage(code.data);
-          fetchURLInfo();  // URL 디코딩 후 자동으로 서버에 전송
+          fetchURLInfo(); // URL 디코딩 후 자동으로 서버에 전송 및 아이콘 업데이트
         } else {
           urlInput.value = "";
           toggleBlockURLImage("");
@@ -51,10 +56,13 @@ document.addEventListener("DOMContentLoaded", () => {
       uploadedImage.src = event.target.result;
       uploadedImage.style.maxWidth = "100%";
       uploadedImage.style.maxHeight = "100%";
-      imageContainer.appendChild(uploadedImage);
-      placeholderImage.style.display = "none";
+      uploadedImage.style.objectFit = "contain";
+      uploadedImage.style.cursor = "pointer";
+      uploadContainer.appendChild(uploadedImage);
 
-      toggleBlockURLImage(document.querySelector(".url-input").value);
+      // 이미지가 업로드되면 이미지와 텍스트 컨테이너 숨기기
+      imageContainer.classList.add("hidden");
+      textContainer.classList.add("hidden");
     };
     reader.readAsDataURL(file);
   };
@@ -134,7 +142,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const fetchURLInfo = async () => {
     const urlToFetch = urlInput.value.trim();
-    const alertIcon = document.querySelector(".image-upload-alert-icon");
 
     if (!urlToFetch) {
       alert("Please enter a URL.");
@@ -142,13 +149,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const response = await fetch('https://secqr-backend-326060264822.asia-northeast1.run.app/predict', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: new URLSearchParams({ url: urlToFetch })
-      });
+      const response = await fetch(
+        "https://secqr-backend-326060264822.asia-northeast1.run.app/predict",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams({ url: urlToFetch }),
+        }
+      );
       const data = await response.json();
 
       // 예측 값에 따라 아이콘 업데이트
@@ -173,12 +183,29 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  const topnavRightContainer = document.querySelector(".Topnav-right-container");
+  const topnavRightContainer = document.querySelector(
+    ".Topnav-right-container"
+  );
   topnavRightContainer.addEventListener("click", openDecodedURL);
 
   uploadContainer.addEventListener("click", () => {
-    fileInput.value = null;
-    fileInput.click();
+    if (uploadedImage) {
+      uploadedImage.remove();
+      uploadedImage = null;
+
+      // 이미지 삭제 후 이미지 및 텍스트 컨테이너 다시 보이게 하기
+      imageContainer.classList.remove("hidden");
+      textContainer.classList.remove("hidden");
+
+      // 이미지 삭제 시 alertIcon도 숨기기
+      alertIcon.style.visibility = "hidden";
+
+      urlInput.value = "";
+      toggleBlockURLImage("");
+    } else {
+      fileInput.value = null;
+      fileInput.click();
+    }
   });
 
   fileInput.addEventListener("change", (event) => {
@@ -188,34 +215,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  imageContainer.addEventListener("click", () => {
-    if (uploadedImage) {
-      uploadedImage.remove();
-      uploadedImage = null;
-      placeholderImage.style.display = "block";
-      urlInput.value = "";
-      toggleBlockURLImage("");
-    }
-  });
-
-  document.querySelector(".Block-URL-button").addEventListener("click", toggleBlockURL);
+  document
+    .querySelector(".Block-URL-button")
+    .addEventListener("click", toggleBlockURL);
 
   addDragAndDropHandlers(uploadContainer);
-  addDragAndDropHandlers(imageContainer);
 
   document.body.appendChild(fileInput);
 
   toggleBlockURLImage(urlInput.value);
 
-  document.querySelector(".Topnav-left-arrow").addEventListener("click", function () {
-    window.location.href = "main.html";
-  });
+  document
+    .querySelector(".Topnav-left-arrow")
+    .addEventListener("click", function () {
+      window.location.href = "main.html";
+    });
 
-  document.querySelector(".Nav-non-select:nth-child(2)").addEventListener("click", function () {
-    window.location.href = "clipboard.html";
-  });
+  document
+    .querySelector(".Nav-non-select:nth-child(2)")
+    .addEventListener("click", function () {
+      window.location.href = "clipboard.html";
+    });
 
-  document.querySelector(".Nav-non-select:nth-child(3)").addEventListener("click", function () {
-    window.location.href = "capture.html";
-  });
+  document
+    .querySelector(".Nav-non-select:nth-child(3)")
+    .addEventListener("click", function () {
+      window.location.href = "capture.html";
+    });
 });
