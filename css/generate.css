@@ -10,7 +10,9 @@ body {
   margin: 0;
   -ms-overflow-style: none;
   font-family: "Pretendard-Regular";
-  height: 600px;
+  background: #E0F7F5;
+  width: 375px;
+  overflow: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -18,69 +20,143 @@ body {
 }
 
 .container {
-  background: transparent;
-  width: 375px;
+  background: #E0F7F5 url("/images/QR-Scan-Star.svg") no-repeat center 40px;
+  background-size: cover;
+  position: relative;
 }
+
 .Topnav {
-  width: 375px;
-  height: 64px;
   justify-content: space-between;
   display: flex;
+  margin: 20px 17px 0px 17px;
+  align-items: center;
+  height: 46px;
 }
 .Topnav-left-container,
 .Topnav-right-container {
   cursor: pointer;
+  margin: 0;
+  height: 42px;
 }
 .Topnav-left-arrow {
-  width: 20px;
-  height: 20px;
-  margin: 25px 0px 19px 36px;
+  width: 42px;
+  height: 42px;
+  margin: 0px 37px 0px 0px;
 }
 .Topnav-title {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 800;
-  margin-top: 25.5px;
   font-family: "DM Sans";
+  color: #225c4b;
 }
 .Topnav-open-url {
-  width: 26px;
-  height: 26px;
-  margin: 22px 36px 16px 0px;
+  width: 42px;
+  height: 42px;
+  margin: 0px 0px 0px 37px;
 }
-.generate-URL {
+.QR-Scan-3D {
+  margin: 39px 126px 20px 125px;
+}
+.Modal {
+  background-color: white;
+  border-radius: 20px 20px 0 0;
+  padding-top: 19.2px;
+  padding-bottom: 31px;
+  position: relative;
+}
+.URL {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  margin: 4.6px 20px 0px 20px;
+}
+.Download-button {
+  width: 38px;
   height: 40px;
-  margin: 5px 16px 0px 16px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background-color: #D2FFF1;
+  border-radius: 7px;
+  margin: 0px;
 }
 
-.generate-URL-input-container {
+.Download {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+
+.URL-input-container {
+  background-color: #F2F2F2;
+  border-radius: 100px;
+  width: 280px;
   height: 40px;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 0;
-  margin-left: 14px;
-  border-top: none; 
-  border-right: none;
-  border-left: none;
-  border-bottom: 1px solid #C5C6CC;
+  margin-left: 17px;
 }
-.generate-url-input {
+.url-input {
   border: none;
   background-color: transparent;
-  margin: 10px 12px 10px 16px;
   outline: none;
-  font-size: 14px;
-  width: 239px;
+  font-size: 16px;
+  margin-left: 8px;
+  padding: 0;
   font-family: "Pretendard-Regular";
 }
 
-.generate-button{
-  margin: 0px 12px 0px 8px;
-  cursor: pointer;
+input[type="text" i] {
+  padding: 0;
 }
+
+.Search-button {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  margin-right: 6px;
+}
+
+.Search-button img {
+  width: 32px;
+  height: 32px;
+}
+
+/* Nav 관련 코드 삭제됨 */
+
 .Image {
-  background-color: #eaf2ff;
+  background-color: #F2F2F2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 144.2px;
+  margin: 24px 20px 0px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+
+.Image-container {
+  border-radius: 50%;
+  position: relative;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 12px;
+  background-color: #F2F2F2;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.Image {
+  background-color: #F2F2F2;
   width: 319px;
   height: 299px;
   border-radius: 16px;
@@ -95,24 +171,4 @@ body {
   max-height: 100%;
   height: auto;
   width: auto;
-}
-.generate-Download-button {
-  display: flex;
-  justify-content: right;
-  padding: 0;
-  cursor: pointer;
-  right: 12px;
-  border-radius: 12px;
-  position: absolute;
-  text-align: center;
-  border: 1.5px solid #C5C6CC;
-  box-sizing: border-box;
-}
-
-.generate-Download-button-text{
-  font-family: "Pretendard-Regular";
-  font-size: 14px;
-  font-weight: 600;
-  color: #006FFD;
-  margin: 9px 40px 9px 40px;
 }
