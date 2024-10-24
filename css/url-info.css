@@ -18,35 +18,46 @@ body {
 }
 
 .container {
-    background: transparent;
-    width: 375px;
-    height: 600px;
+    background: #FFEFD7 url("/images/URL-Info-Star.svg") no-repeat center 55px;
+    background-size: 500px 530px;
+    position: relative;
 }
 .Topnav {
-    width: 375px;
-    height: 64px;
     justify-content: space-between;
     display: flex;
+    align-items: center;
+    height: 46px;
 }
 .Topnav-left-container,
 .Topnav-right-container {
     cursor: pointer;
 }
 .Topnav-left-arrow {
-    width: 20px;
-    height: 20px;
-    margin: 25px 0px 19px 36px;
+    width: 46px;
+    height: 46px;
+    margin: 25px 0px 0px 10px;
 }
 .Topnav-title {
-    font-size: 16px;
+    font-size: 24px;
     font-weight: 800;
-    margin-top: 25.5px;
+    margin-left: 5px;
+    margin-top: 24px;
     font-family: "DM Sans";
 }
 .Topnav-open-url {
-    width: 26px;
-    height: 26px;
-    margin: 22px 36px 16px 0px;
+    width: 46px;
+    height: 46px;
+    margin: 25px 10px 0px 0px;
+}
+.URL-Info-3D {
+    margin: 50px 104px 19.2px 104px;
+}
+.Modal {
+    background-color: white;
+    border-radius: 20px 20px 0 0;
+    padding-top: 19.2px;
+    padding-bottom: 31px;
+    position: relative;
 }
 .URL {
     display: flex;
@@ -160,4 +171,67 @@ body {
     height: 0.5px;
     background-color: #C5C6CC;
     border-radius: 4px; 
+}
+
+/* 튜토리얼 info 버튼*/
+.tutorial-btn {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0px;
+    position: absolute;
+    right: 10px;
+    top: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tutorial-btn:hover {
+    background-color: #999;
+}
+
+.info-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* 튜토리얼 info. 피그마 작업 후 대체되면 수정할 예정 */
+.tutorial {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tutorial-step {
+    padding: 10px;
+    border-radius: 8px;
+    position: absolute;
+    max-width: 120px;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+}
+
+.tutorial-close {
+    padding: 10px;
+    border-radius: 8px;
+    position: absolute;
+    max-width: 140px;
+    text-align: center;
+    color: white;
+    font-size: 15px;
 }
