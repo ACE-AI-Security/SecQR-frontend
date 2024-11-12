@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         try {
-            const response = await fetch('https://secqr-backend-326060264822.asia-northeast1.run.app/predict', {
+            const response = await fetch('https://secqrinv1-367846152084.asia-northeast3.run.app/predict', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
