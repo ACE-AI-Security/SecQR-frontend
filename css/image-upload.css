@@ -11,10 +11,10 @@ body {
   -ms-overflow-style: none;
   font-family: "Pretendard-Regular";
   background: #eefaff;
-  width: 375px;
+  max-width: 375px;
+  margin: 0 auto;
   overflow: hidden;
 }
-
 ::-webkit-scrollbar {
   display: none;
 }
@@ -23,7 +23,13 @@ body {
   background: #E0F7F5 url("/images/QR-Scan-Star.svg") no-repeat center 40px;
   background-size: cover;
   position: relative;
+  width: 375px; /* 고정 너비 설정 */
+  height: 600px; /* 고정 높이 설정 (필요시 조정) */
+  box-sizing: border-box;
+  margin: 0 auto;
 }
+
+
 
 .Topnav {
   justify-content: space-between;
@@ -44,7 +50,7 @@ body {
   margin: 0px 37px 0px 0px;
 }
 .Topnav-title {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 800;
   font-family: "DM Sans";
   color: #225c4b;
@@ -53,6 +59,19 @@ body {
   width: 42px;
   height: 42px;
   margin: 0px 0px 0px 37px;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0; /* 상하 여백 */
+}
+
+.centered-image {
+  width: 124px;
+  height: 121px;
+  object-fit: cover;
 }
 .QR-Scan-3D {
   margin: 39px 126px 20px 125px;
@@ -66,64 +85,42 @@ body {
 }
 .URL {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin: 4.6px 20px 0px 20px;
+  gap: 10px; /* 요소 간 간격 */
+  padding: 5px 20px; /* 전체 URL 섹션의 좌우 여백 */
+  box-sizing: border-box;
 }
+
 .Block-URL-button {
   width: 38px;
   height: 40px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  display: flex;
   background-color: #ffe7e7;
   border-radius: 7px;
-  margin: 0px;
-}
-.Block-URL {
-  width: 18px;
-  height: 18px;
-  cursor: pointer;
+  flex-shrink: 0;
 }
 
 .URL-input-container {
-  background-color: #F2F2F2;
-  border-radius: 100px;
-  width: 280px;
+  background-color: #eaf2ff;
+  border-radius: 71px;
   height: 40px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 0;
-  margin-left: 17px;
+  padding: 0 15px; /* URL 입력 필드 안쪽 여백 */
+  flex-grow: 1; /* 남은 공간을 차지하도록 설정 */
+  box-sizing: border-box;
+  margin-right: 10px; /* 오른쪽 여백 */
 }
+
 .url-input {
   border: none;
   background-color: transparent;
   outline: none;
-  font-size: 16px;
-  margin-left: 8px;
-  padding: 0;
+  font-size: 14px;
+  width: 100%; /* 입력 필드가 전체 너비를 차지하도록 설정 */
   font-family: "Pretendard-Regular";
-}
-
-input[type="text" i] {
-  padding: 0;
-}
-
-.image-upload-alert {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 21px;
-  margin: 0px 10px 0px 0px;
-}
-.image-upload-alert-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 21px;
-  height: 21px;
 }
 .Search-button {
   display: flex;
@@ -137,6 +134,7 @@ input[type="text" i] {
   width: 32px;
   height: 32px;
 }
+
 .Nav {
   height: 46px;
   display: flex;
@@ -180,18 +178,15 @@ input[type="text" i] {
 }
 
 .Upload {
-  background-color: #F2F2F2;
-  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 144.2px;
-  margin: 24px 20px 0px 20px;
+  margin: 24px 20px 0;
+  background-color: #f2f2f2;
   border-radius: 12px;
   cursor: pointer;
-  overflow: hidden;
-  position: relative;
 }
 
 .Upload-image-container {
@@ -206,13 +201,10 @@ input[type="text" i] {
   align-items: center;
 }
 .Upload img {
-  max-width: 100%; /* 부모 요소의 너비를 넘지 않도록 */
-  max-height: 100%; /* 부모 요소의 높이를 넘지 않도록 */
-  object-fit: contain; /* 이미지의 비율을 유지하며 부모 요소에 맞추기 */
-  position: absolute; /* 이미지 중앙 배치를 위해 추가 */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* 부모 요소 안에서 중앙으로 이동 */
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block; /* 이미지 주변 공백 방지 */
 }
 .Upload-img {
   width: 24px;

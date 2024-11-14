@@ -20,7 +20,7 @@ body {
 }
 
 .container {
-  background: #E0F7F5 url("/images/QR-Scan-Star.svg") no-repeat center 40px;
+  background: #EBFFF9 url("/images/Star 11.svg") no-repeat center 40px;
   background-size: cover;
   position: relative;
 }
@@ -55,7 +55,7 @@ body {
   margin: 0px 0px 0px 37px;
 }
 .QR-Scan-3D {
-  margin: 39px 126px 20px 125px;
+  margin: 39px 126px 20px 110px;
 }
 .Modal {
   background-color: white;
@@ -82,8 +82,8 @@ body {
 }
 
 .Download {
-  width: 18px;
-  height: 18px;
+  width: 28px;
+  height: 28px;
   cursor: pointer;
 }
 
