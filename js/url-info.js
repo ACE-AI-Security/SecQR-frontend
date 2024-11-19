@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
 
         try {
-            const response = await fetch('https://secqrinv1-367846152084.asia-northeast3.run.app/predict', { 
+            const response = await fetch('https://testback-367846152084.asia-northeast3.run.app/predict', { 
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'

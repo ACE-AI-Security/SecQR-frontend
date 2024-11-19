@@ -4,9 +4,41 @@ document.addEventListener("DOMContentLoaded", () => {
   const placeholderImage = document.querySelector(".Image-placeholder");
   let uploadedImage = null;
 
-  // URL 입력 필드 비활성화
   const urlInput = document.querySelector(".url-input");
   urlInput.disabled = true;
+
+  const addWhiteBackground = (img) => {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = img.width;
+    canvas.height = img.height;
+
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(img, 0, 0, img.width, img.height);
+
+    return canvas;
+  };
+
+  const decodeQRFromImage = (img) => {
+    const processedCanvas = addWhiteBackground(img);
+    const ctx = processedCanvas.getContext("2d");
+    const imageData = ctx.getImageData(0, 0, processedCanvas.width, processedCanvas.height);
+
+    const code = jsQR(imageData.data, processedCanvas.width, processedCanvas.height);
+
+    if (code) {
+      console.log("Decoded Data:", code.data);
+      urlInput.value = code.data;
+      toggleBlockURLImage(code.data);
+      fetchURLInfo(code.data);
+    } else {
+      console.error("QR Code decoding failed.");
+      urlInput.value = "";
+      toggleBlockURLImage("");
+    }
+  };
 
   const handleClipboardPaste = (event) => {
     const items = event.clipboardData.items;
@@ -36,34 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
     imageContainer.appendChild(newImage);
     uploadedImage = newImage;
     placeholderImage.style.display = "none";
-  };
-
-  const decodeQRFromImage = (img) => {
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d");
-    canvas.width = img.width;
-    canvas.height = img.height;
-    ctx.drawImage(img, 0, 0, img.width, img.height);
-    const imageData = ctx.getImageData(0, 0, img.width, img.height);
-    const code = jsQR(imageData.data, imageData.width, imageData.height);
-    if (code) {
-      const decodedURL = code.data;
-      urlInput.value = decodedURL;
-      toggleBlockURLImage(decodedURL);
-      fetchURLInfo(decodedURL); // 디코딩되면 자동으로 서버에 전송
-    } else {
-      urlInput.value = "";
-      toggleBlockURLImage("");
-    }
-  };
-
-  const openDecodedURL = () => {
-    const decodedURL = urlInput.value;
-    if (decodedURL) {
-      window.open(decodedURL, "_blank");
-    } else {
-      alert("Please enter a URL.");
-    }
   };
 
   const toggleBlockURLImage = (url) => {
@@ -114,16 +118,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const alertIcon = document.querySelector(".clipboard-alert-icon");
 
     try {
-      const response = await fetch('https://secqrinv1-367846152084.asia-northeast3.run.app/predict', {
+      const response = await fetch('https://testback-367846152084.asia-northeast3.run.app/predict', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
+          'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: new URLSearchParams({ url: url })
+        body: new URLSearchParams({ url: url }),
       });
       const data = await response.json();
 
-      // 예측 값에 따라 아이콘 업데이트
       switch (parseInt(data.prediction)) {
         case 0:
           alertIcon.src = "/images/check_circle.svg";
@@ -132,8 +135,6 @@ document.addEventListener("DOMContentLoaded", () => {
           alertIcon.src = "/images/warning.svg";
           break;
         case 2:
-          alertIcon.src = "/images/dangerous.svg";
-          break;
         case 3:
           alertIcon.src = "/images/dangerous.svg";
           break;
@@ -141,26 +142,33 @@ document.addEventListener("DOMContentLoaded", () => {
           alertIcon.src = "";
       }
 
-      alertIcon.style.visibility = "visible"; // 아이콘 표시
+      alertIcon.style.visibility = "visible";
     } catch (error) {
       console.error("Error fetching URL info:", error);
     }
   };
 
-  const topnavRightContainer = document.querySelector(".Topnav-right-container");
-  topnavRightContainer.addEventListener("click", openDecodedURL);
-
   document.querySelector(".Block-URL-button").addEventListener("click", toggleBlockURL);
 
-  document.querySelector(".Topnav-left-arrow").addEventListener("click", function () {
+  document.querySelector(".Topnav-left-arrow").addEventListener("click", () => {
     window.location.href = "main.html";
   });
 
-  document.querySelector(".Nav-non-select:nth-child(1)").addEventListener("click", function () {
+  const topnavRightContainer = document.querySelector(".Topnav-right-container");
+  topnavRightContainer.addEventListener("click", () => {
+    const decodedURL = urlInput.value;
+    if (decodedURL) {
+      window.open(decodedURL, "_blank");
+    } else {
+      alert("Please enter a URL.");
+    }
+  });
+
+  document.querySelector(".Nav-non-select:nth-child(1)").addEventListener("click", () => {
     window.location.href = "image-upload.html";
   });
 
-  document.querySelector(".Nav-non-select:nth-child(3)").addEventListener("click", function () {
+  document.querySelector(".Nav-non-select:nth-child(3)").addEventListener("click", () => {
     window.location.href = "capture.html";
   });
 

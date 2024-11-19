@@ -20,7 +20,7 @@ body {
 }
 
 .container {
-  background: #EBFFF9 url("/images/Star 11.svg") no-repeat center 40px;
+  background: #E0F7F5 url("/images/QR-Scan-Star.svg") no-repeat center 40px;
   background-size: cover;
   position: relative;
 }
@@ -44,10 +44,9 @@ body {
   margin: 0px 37px 0px 0px;
 }
 .Topnav-title {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 800;
   font-family: "DM Sans";
-  color: #225c4b;
 }
 .Topnav-open-url {
   width: 42px;
@@ -55,7 +54,7 @@ body {
   margin: 0px 0px 0px 37px;
 }
 .QR-Scan-3D {
-  margin: 39px 126px 20px 110px;
+  margin: 50px 104px 19.2px 104px;
 }
 .Modal {
   background-color: white;

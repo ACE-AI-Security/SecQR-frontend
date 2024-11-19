@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         try {
-            const response = await fetch('https://secqrinv1-367846152084.asia-northeast3.run.app/predict', {
+            const response = await fetch('https://testback-367846152084.asia-northeast3.run.app/predict', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -127,10 +127,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
     toggleBlockURLImage(document.querySelector(".main-url-input").value);
-});
-document.getElementById('report-btn').addEventListener('click', function() {
-    window.open(chrome.runtime.getURL('../html/report.html'), '_blank');
-
 });
 
 

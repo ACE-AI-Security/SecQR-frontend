@@ -9,7 +9,7 @@ body {
     margin: 0;
     -ms-overflow-style: none;
     font-family: 'Pretendard-Regular';
-    background-color: #FFF8FA;
+    background-color: white;
 }
 
 ::-webkit-scrollbar {
@@ -30,15 +30,15 @@ body {
     font-size: 40px;
     font-weight: 700;
     margin-top: 24px;
-    margin-left: 120px;
+    margin-left: 127px; /* 이전 120*/
     text-align : center;
     font-family: 'DM Sans';
-    color: #225C4B;
+    color: black; /* 이전 #225C4B; */
 }
 .main-open-url {
-    width: 26px;
-    height: 26px;
-    margin: 75px 20px 0px 0px;
+    width: 30px; /* 이전 26*/
+    height: 30px; /* 이전 26*/
+    margin: 85px 27px -10px 0px; /*이전 75 20 0 0*/
     cursor: pointer;
 }
 
@@ -115,7 +115,6 @@ input[type="text" i] {
     height: 32px;
 }
 .main-container {
-    
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 두 개의 열 */
     gap: 15px; /* 박스 사이의 간격 조정 */
