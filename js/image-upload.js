@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const response = await fetch(
-        "https://testback-367846152084.asia-northeast3.run.app/predict",
+        "https://secqr-backend-flask-871288659002.asia-northeast3.run.app/predict",
         {
           method: "POST",
           headers: {
