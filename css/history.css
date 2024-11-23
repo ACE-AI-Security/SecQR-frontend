@@ -18,14 +18,16 @@ body {
 }
 
 .container {
-  background: transparent;
-  width: 375px;
-  overflow-y: auto; 
+  background: #F7F3FF url("/images/historystar.png") no-repeat center 55px;
+  background-size: 500px 530px;
+  position: relative;
 }
+
 .Topnav {
   width: 375px;
-  height: 64px;
+  height: 46px;
   justify-content: space-between;
+  align-items: center;
   display: flex;
 }
 .Topnav-left-container,
@@ -33,23 +35,32 @@ body {
   cursor: pointer;
 }
 .Topnav-left-arrow {
-  width: 20px;
-  height: 20px;
-  margin: 25px 0px 19px 36px;
+  width: 46px;
+  height: 46px;
+  margin: 25px 0px 0px 10px;
 }
 .Topnav-title {
-  font-size: 16px;
+  font-size: 22px;
   font-weight: 800;
-  margin-top: 25.5px;
+  margin-top: 24px;
   font-family: "DM Sans";
+  color:#225C4B;
 }
 .Topnav-open-url {
-  width: 26px;
-  height: 26px;
-  margin: 22px 36px 16px 0px;
-  filter: brightness(0) invert(1);
+  width: 46px;
+  height: 46px;
+  margin: 25px 10px 0px 0px;
 }
-
+.URL-Info-3D {
+  margin: 40px 0px 10.2px 105px;
+}
+.Modal {
+    background-color: white;
+    border-radius: 20px 20px 0 0;
+    padding-top: 19.2px;
+    padding-bottom: 31px;
+    position:relative;
+}
 .history-title {
   letter-spacing: 0.05em;
   text-align: left;
