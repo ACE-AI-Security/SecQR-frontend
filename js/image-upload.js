@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const response = await fetch(
-        "https://acesecqr1-871288659002.asia-northeast3.run.app/predict",
+        'https://acesecqrf-871288659002.asia-northeast3.run.app/predict',
         {
           method: "POST",
           headers: {

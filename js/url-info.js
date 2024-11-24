@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
 
         try {
-            const response = await fetch('https://acesecqr1-871288659002.asia-northeast3.run.app/predict', { 
+            const response = await fetch('https://acesecqrf-871288659002.asia-northeast3.run.app/predict', { 
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
