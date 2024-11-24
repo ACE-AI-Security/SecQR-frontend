@@ -10,7 +10,7 @@ body {
   margin: 0;
   -ms-overflow-style: none;
   font-family: "Pretendard-Regular";
-  background: #E0F7F5;
+  background: #EBFFF9;
   width: 375px;
   overflow: hidden;
 }
@@ -21,7 +21,7 @@ body {
 
 .container {
   background: #EBFFF9 url("/images/Star 11.svg") no-repeat center 40px;
-  background-size: cover;
+  background-size: 150%;
   position: relative;
 }
 
@@ -41,21 +41,21 @@ body {
 .Topnav-left-arrow {
   width: 42px;
   height: 42px;
-  margin: 0px 37px 0px 0px;
+  margin: -12px 40px 0px -5px;
 }
 .Topnav-title {
   font-size: 20px;
   font-weight: 800;
   font-family: "DM Sans";
-  color: #225C4B;
+  margin-top: -22px
 }
 .Topnav-open-url {
-  width: 42px;
-  height: 42px;
-  margin: 0px 0px 0px 37px;
+  width: 36px;
+  height: 36px;
+  margin: -7px 0px 0px 35px;
 }
 .QR-Scan-3D {
-  margin: 39px 126px 20px 110px;
+  margin: 39px 135px 20px 115px;
 }
 .Modal {
   background-color: white;
@@ -78,12 +78,12 @@ body {
   display: flex;
   background-color: #D2FFF1;
   border-radius: 7px;
-  margin: 0px;
+  margin-left: 5px;
 }
 
 .Download {
-  width: 20px;
-  height: 18px;
+  width: 26px;
+  height: 26px;
   cursor: pointer;
 }
 
@@ -91,20 +91,21 @@ body {
 .URL-input-container {
   background-color: #F2F2F2;
   border-radius: 100px;
-  width: 280px;
+  width: 270px;
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
-  margin-left: 17px;
+  margin-left: 0px;
+  margin-right: 8px;
 }
 .url-input {
   border: none;
   background-color: transparent;
   outline: none;
   font-size: 16px;
-  margin-left: 8px;
+  margin-left: 0px;
   padding: 0;
   font-family: "Pretendard-Regular";
 }
