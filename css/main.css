@@ -9,7 +9,7 @@ body {
     margin: 0;
     -ms-overflow-style: none;
     font-family: 'Pretendard-Regular';
-    background-color: white;
+    background-color: #FFF5FA;
 }
 
 ::-webkit-scrollbar {
@@ -33,12 +33,12 @@ body {
     margin-left: 127px; /* 이전 120*/
     text-align : center;
     font-family: 'DM Sans';
-    color: black; /* 이전 #225C4B; */
+    color: #225C4B; /* 이전 #225C4B; */
 }
 .main-open-url {
     width: 30px; /* 이전 26*/
     height: 30px; /* 이전 26*/
-    margin: 85px 33px -10px 0px; /*이전 75 20 0 0*/
+    margin: 85px 27px -10px 0px; /*이전 75 20 0 0*/
     cursor: pointer;
 }
 
@@ -65,13 +65,13 @@ body {
 }
 
 .main-URL-input-container {
-    background-color: #eaf2ff;
+    background-color: #F2F2F2;
     border-radius: 71px;
     height: 40px;
     display: flex;
     align-items: center;
     padding: 0;
-    margin-left: 8px;
+    margin-left: 5px;
 }
 .main-url-input {
     border: none;
@@ -79,7 +79,7 @@ body {
     margin: 5px 5px 10px 10px;
     outline: none;
     font-size: 14px;
-    width: 200px;
+    width: 209px;
     font-family: 'Pretendard-Regular';
 }
 
@@ -107,12 +107,12 @@ input[type="text" i] {
     justify-content: center;
     padding: 0;
     cursor: pointer;
-    margin-right: 2px;
+    margin-right: 6px;
 }
 
 .main-Search-button img {
-    width: 32px;
-    height: 32px;
+    width: 25px;
+    height: 25px;
 }
 .main-container {
     display: grid;

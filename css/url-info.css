@@ -21,7 +21,7 @@ body {
 
 .container {
     background: #FFEFD7 url("/images/URL-Info-Star.svg") no-repeat center 55px;
-    background-size: 115%;
+    background-size: 500px 530px;
     position: relative;
 }
 .Topnav {
@@ -35,21 +35,22 @@ body {
     cursor: pointer;
 }
 .Topnav-left-arrow {
-    width: 42px;
-    height: 42px;
-    margin: 20px 0px 0px 12px;
+    width: 46px;
+    height: 46px;
+    margin: 25px 0px 0px 10px;
 }
 .Topnav-title {
-    font-size: 21px;
+    font-size: 22px;
     font-weight: 800;
     margin-left: 0px;
-    margin-top: 19px;
+    margin-top: 24px;
     font-family: "DM Sans";
+    color: #225C4B;
 }
 .Topnav-open-url {
-    width: 36px;
-    height: 36px;
-    margin: 24px 14px 0px 0px;
+    width: 46px;
+    height: 46px;
+    margin: 25px 10px 0px 0px;
 }
 .URL-Info-3D {
     margin: 40px 0px 10.2px 105px;
