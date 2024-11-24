@@ -9,7 +9,7 @@ body {
     margin: 0;
     -ms-overflow-style: none;
     font-family: 'Pretendard-Regular';
-    background-color: #FFF5FA;
+    background-color: white;
 }
 
 ::-webkit-scrollbar {
