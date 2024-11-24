@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const alertIcon = document.querySelector(".clipboard-alert-icon");
 
     try {
-      const response = await fetch('https://secqr-backend-flask-871288659002.asia-northeast3.run.app/predict', {
+      const response = await fetch('https://acesecqr1-871288659002.asia-northeast3.run.app/predict', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
